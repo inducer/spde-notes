@@ -530,7 +530,7 @@
     combinations of normal r.v.s. are normal.
 
     <\equation*>
-      E\<eta\><rsub|k>\<eta\><rsub|n>=<frac|4|\<pi\><rsup|2>><big|int><rsub|0><rsup|\<pi\>><big|int><rsub|0><rsup|\<pi\>>(t\<wedge\>s-t*s/\<pi\>)sin(<with|color|red|n*t?>)sin(k*s)=<choice|<tformat|<table|<row|<cell|0>|<cell|k\<neq\>n,>>|<row|<cell|<frac|2|\<pi\>n<rsup|2>>>|<cell|k=n\<gtr\>0.>>>>>
+      E\<eta\><rsub|k>\<eta\><rsub|n>=<frac|4|\<pi\><rsup|2>><big|int><rsub|0><rsup|\<pi\>><big|int><rsub|0><rsup|\<pi\>>(t\<wedge\>s-t*s/\<pi\>)sin(n*t)sin(k*s)=<choice|<tformat|<table|<row|<cell|0>|<cell|k\<neq\>n,>>|<row|<cell|<frac|2|\<pi\>n<rsup|2>>>|<cell|k=n\<gtr\>0.>>>>>
     </equation*>
 
     For <with|mode|math|n=0>,
@@ -542,9 +542,150 @@
     \;
   </proof>
 
+  <section|The Itô Integral and Formula>
+
+  Suppose we have some system described by <with|mode|math|X<rsub|t>> that
+  has some additive noise <with|mode|math|\<xi\><rsub|t>>:
+  <with|mode|math|Y<rsub|t>=X<rsub|t>+\<xi\><rsub|t>>.
+  (<with|mode|math|t=1,2,3,\<ldots\>>) The
+  <with|mode|math|\<xi\><rsub|1>,\<xi\><rsub|2>,\<ldots\>> are assumed to be
+
+  <\enumerate>
+    <item>iid
+
+    <item><with|mode|math|\<xi\><rsub|i>\<sim\>N(\<mu\>,\<sigma\><rsup|2>)>
+  </enumerate>
+
+  If the <with|mode|math|\<xi\><rsub|t>> satisfy the first property, they are
+  called <em|white noise>. If they satisfy both, it is <em|Gaussian white
+  noise>.
+
+  If we now consider <with|mode|math|W<rsub|t>>
+  <with|mode|math|\<xi\><rsub|0>=W<rsub|0>=0>,
+  <with|mode|math|\<xi\><rsub|1>=W<rsub|t<rsub|1>>-W<rsub|0>>,
+  <with|mode|math|\<xi\><rsub|2>=W<rsub|t<rsub|2>>-W<rsub|t<rsub|1>>>, ...,
+  then
+
+  <\enumerate>
+    <item>holds
+
+    <item>holds
+  </enumerate>
+
+  A popular model in dynamics is
+
   <\equation*>
-    \;
+    X<rsub|t+\<Delta\>>=A*X<rsub|t>+B+\<xi\><rsub|t+1>
   </equation*>
+
+  for, say, the dynamics of an ``aircraft''. Another possibility is modeling
+  the price of a risky asset
+
+  <\equation*>
+    X<rsub|t+\<Delta\>>=X<rsub|t>+\<mu\>X<rsub|t>\<Delta\>+\<sigma\>X<rsub|t>(W<rsub|t+1>-W<rsub|t>),
+  </equation*>
+
+  where <with|mode|math|\<mu\>> is the individual trend of the stock, while
+  <with|mode|math|\<sigma\>> is market-introduced volatility. Equivalently,
+  we might write
+
+  <\equation*>
+    <frac|X<rsub|t+\<Delta\>>-X<rsub|t>|\<Delta\>>=\<mu\>X<rsub|t>-\<sigma\>X<rsub|t><frac|W<rsub|t+1>-W<rsub|t>|\<Delta\>>
+  </equation*>
+
+  and then let <with|mode|math|\<Delta\>t\<downarrow\>0>, such that we obtain
+
+  <\equation*>
+    <wide|X|\<dot\>><rsub|t>=\<mu\>X<rsub|t>+\<sigma\>X<rsub|t><wide|W|\<dot\>><rsub|t>,
+  </equation*>
+
+  which is all nice and well except that the derivative of white noise does
+  not exist. But note that there is less of a problem defining the same
+  equation in integral terms.
+
+  <em|Step 1:> Suppose we have a function <with|mode|math|f(s)>, which might
+  be random. Then define
+
+  <\equation*>
+    I<rsub|n>(f)=<big|sum><rsub|k>f(s<rsub|k><rsup|\<ast\>>)(W<rsub|s<rsub|k+1>>-W<rsub|s<rsub|k>>).
+  </equation*>
+
+  But what happens if <with|mode|math|f(s)=W<rsub|s>>. We get the term
+
+  <\equation*>
+    W<rsub|s<rsub|k>>(W<rsub|s<rsub|k+1>>-W<rsub|s<rsub|k>>).
+  </equation*>
+
+  Or is it
+
+  <\equation*>
+    W<rsub|s<rsub|k+1>>(W<rsub|s<rsub|k+1>>-W<rsub|s<rsub|k>>)?
+  </equation*>
+
+  Or even
+
+  <\equation*>
+    W<rsub|<frac|s<rsub|k+1>+s<rsub|k>|2>>(W<rsub|s<rsub|k+1>>-W<rsub|s<rsub|k>>)?
+  </equation*>
+
+  In the Riemann integral, it does not matter where you evaluate the
+  integrand--it all converges to the same value. But here, we run into
+  trouble. Consider
+
+  <\eqnarray*>
+    <tformat|<table|<row|<cell|E\|W<rsub|s<rsub|k>>(W<rsub|s<rsub|k+1>>-W<rsub|s<rsub|k>>)\|<rsup|2>>|<cell|\<neq\>>|<cell|E\|W<rsub|s<rsub|k>>(W<rsub|s<rsub|k+1>>-W<rsub|s<rsub|k>>)\|<rsup|2>>>|<row|<cell|\<\|\|\><space|2em>>|<cell|>|<cell|<space|2em><neg|\<\|\|\>>>>|<row|<cell|E\|W<rsub|s<rsub|k>>\|<rsup|2>E\|W<rsub|s<rsub|k+1>>-W<rsub|s<rsub|k>>\|<rsup|2>>|<cell|>|<cell|E\|W<rsub|s<rsub|k-1>>(W<rsub|s<rsub|k+1>>-W<rsub|s<rsub|k>>)\|<rsup|2>>>|<row|<cell|\<\|\|\><space|2em>>|<cell|>|<cell|<space|2em><neg|\<\|\|\>>>>|<row|<cell|s<rsub|k>(s<rsub|k+1>-s<rsub|k>)>|<cell|>|<cell|E\|W<rsub|<frac|s<rsub|k+1>+s<rsub|k>|2>>(W<rsub|s<rsub|k+1>>-W<rsub|s<rsub|k>>)\|<rsup|2>.>>>>
+  </eqnarray*>
+
+  <em|Problem:> Compute each of the above expectations, and show they are not
+  equal.
+
+  <subsection|The Itô Construction>
+
+  The idea here is to use simple functions:
+
+  <\equation*>
+    f(s)=<big|sum><rsub|i=0><rsup|n>e<rsub|i>(\<omega\>)\<b-1\><rsub|(t<rsub|i>,t<rsub|i+1>)>(s),
+  </equation*>
+
+  where <with|mode|math|e<rsub|i>> is <with|mode|math|\<cal-F\><rsub|t<rsub|i>><rsup|W>>-measurable,
+  where <with|mode|math|\<cal-F\><rsub|t<rsub|i>><rsup|W>=\<sigma\>(W<rsub|s<rsub|1>>,\<ldots\>,W<rsub|s<rsub|k>>:s<rsub|i>\<leqslant\>s)>
+
+  <\eqnarray*>
+    <tformat|<table|<row|<cell|>|<cell|\<Leftrightarrow\>>|<cell|>>|<row|<cell|>|<cell|e<rsub|i>=e<rsub|i>(W<rsub|r>,
+    r\<in\>[0,t<rsub|i>])>|<cell|>>|<row|<cell|>|<cell|\<Leftrightarrow\>>|<cell|>>|<row|<cell|>|<cell|<with|mode|text|<with|mode|math|e<rsub|i>>
+    is ``adapted'' to <with|mode|math|\<cal-F\><rsub|t<rsub|i>><rsup|W>>>.>|<cell|>>>>
+  </eqnarray*>
+
+  <\definition>
+    <\equation*>
+      I(f)=<big|sum><rsub|i=0><rsup|n>e<rsub|i>(W<rsub|t<rsub|i+1>>-W<rsub|t<rsub|i>>).
+    </equation*>
+  </definition>
+
+  <em|Properties:>
+
+  <\enumerate>
+    <item><with|mode|math|E[I(f)]=0>
+
+    <em|Proof:>\ 
+
+    <\eqnarray*>
+      <tformat|<table|<row|<cell|E[I(f)]>|<cell|=>|<cell|<big|sum><rsub|i=0><rsup|n>E*e<rsub|i>(W<rsub|t<rsub|i+1>>-W<rsub|t<rsub|i>>)>>|<row|<cell|>|<cell|=>|<cell|<big|sum><rsub|i=0><rsup|n>E<left|(>E<left|(>e<rsub|i>(W<rsub|t<rsub|i+1>>-W<rsub|t<rsub|i>>)<mid|\|>\<cal-F\><rsub|t<rsub|i>><rsup|W><right|)><right|)>>>|<row|<cell|>|<cell|=>|<cell|<big|sum><rsub|i=0><rsup|n>E(e<rsub|i>E[(W<rsub|t<rsub|i+1>>-W<rsub|t<rsub|i>>)\|\<cal-F\><rsub|t<rsub|i>><rsup|W>])>>|<row|<cell|>|<cell|=>|<cell|<big|sum><rsub|i=0><rsup|n>E(e<rsub|i>E[W<rsub|t<rsub|i+1>>-W<rsub|t<rsub|i>>])>>|<row|<cell|>|<cell|=>|<cell|<big|sum><rsub|i=0><rsup|n>E(e<rsub|i>*0)=0.>>>>
+    </eqnarray*>
+
+    <item>
+
+    <\eqnarray*>
+      <tformat|<table|<row|<cell|E\|I(f)\|<rsup|2>>|<cell|=>|<cell|<big|sum><rsub|i=1><rsup|N>E\|e<rsub|i>\|<rsup|2>(t<rsub|i+1>-t<rsub|i>)=<big|int><rsub|0><rsup|T>E\|f(s)\|<rsup|2>\<mathd\>s>>|<row|<cell|>|<cell|=>|<cell|E<left|[><big|sum>e<rsub|i>(W<rsub|t<rsub|i+1>>-W<rsub|t<rsub|i>>)<right|]><rsup|2>>>|<row|<cell|>|<cell|=>|<cell|<big|sum>E<left|[>e<rsub|i><rsup|2>(W<rsub|t<rsub|i+1>>-W<rsub|t<rsub|i>>)<rsup|2><right|]>-E<left|[>e<rsub|i>e<rsub|j>(W<rsub|t<rsub|i+1>>-W<rsub|t<rsub|i>>)(W<rsub|t<rsub|j+1>>-W<rsub|t<rsub|j>>)<right|]>>>|<row|<cell|>|<cell|=>|<cell|E<left|(>E(e<rsub|i><rsup|2>(W<rsub|t<rsub|i+1>>-W<rsub|t<rsub|i>>)\|\<cal-F\><rsub|t<rsub|i>><rsup|W>))>>|<row|<cell|>|<cell|=>|<cell|E[e<rsub|i><rsup|2>](t<rsub|i+1>-t<rsub|i>).>>>>
+    </eqnarray*>
+
+    <item><with|mode|math|I(f)> is linear.
+  </enumerate>
+
+  Next: If <with|mode|math|f(s)> is only <with|mode|math|\<cal-F\><rsub|s><rsup|W>>-measurable
+  (but not a step function), and if <with|mode|math|<big|int><rsub|0><rsup|T>E*f<rsup|2>(s)\<mathd\>s\<less\>\<infty\>><with|mode|math|\<Rightarrow\>>
+  could be approximated by a sequence of step functions
+  <with|mode|math|f<rsub|n>(s)\<rightarrow\>f(s)>.
 </body>
 
 <\initial>
@@ -560,6 +701,8 @@
     <associate|auto-3|<tuple|1.2|3>>
     <associate|auto-4|<tuple|1.3|4>>
     <associate|auto-5|<tuple|1.4|4>>
+    <associate|auto-6|<tuple|2|6>>
+    <associate|auto-7|<tuple|2.1|?>>
     <associate|def:bm-def2|<tuple|1.18|4>>
     <associate|eq:ce-example-exp|<tuple|1.1|3>>
   </collection>
@@ -587,6 +730,10 @@
       <with|par-left|<quote|1.5fn>|1.4<space|2spc>Brownian Motion (Wiener
       Processes) <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
       <no-break><pageref|auto-5>>
+
+      <vspace*|1fn><with|font-series|<quote|bold>|math-font-series|<quote|bold>|2<space|2spc>The
+      Itô Integral and Formula> <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
+      <no-break><pageref|auto-6><vspace|0.5fn>
     </associate>
   </collection>
 </auxiliary>
