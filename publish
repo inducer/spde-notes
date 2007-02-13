@@ -1,0 +1,2 @@
+#! /bin/sh
+scp spde.{tm,pdf} tikernet@tiker.net:drupal-files/news.tiker.net/download/academic/notes/spde
