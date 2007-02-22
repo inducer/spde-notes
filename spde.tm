@@ -633,7 +633,7 @@
   trouble. Consider
 
   <\eqnarray*>
-    <tformat|<table|<row|<cell|E\|W<rsub|s<rsub|k>>(W<rsub|s<rsub|k+1>>-W<rsub|s<rsub|k>>)\|<rsup|2>>|<cell|\<neq\>>|<cell|E\|W<rsub|s<rsub|k>>(W<rsub|s<rsub|k+1>>-W<rsub|s<rsub|k>>)\|<rsup|2>>>|<row|<cell|\<\|\|\><space|2em>>|<cell|>|<cell|<space|2em><neg|\<\|\|\>>>>|<row|<cell|E\|W<rsub|s<rsub|k>>\|<rsup|2>E\|W<rsub|s<rsub|k+1>>-W<rsub|s<rsub|k>>\|<rsup|2>>|<cell|>|<cell|E\|W<rsub|s<rsub|k-1>>(W<rsub|s<rsub|k+1>>-W<rsub|s<rsub|k>>)\|<rsup|2>>>|<row|<cell|\<\|\|\><space|2em>>|<cell|>|<cell|<space|2em><neg|\<\|\|\>>>>|<row|<cell|s<rsub|k>(s<rsub|k+1>-s<rsub|k>)>|<cell|>|<cell|E\|W<rsub|<frac|s<rsub|k+1>+s<rsub|k>|2>>(W<rsub|s<rsub|k+1>>-W<rsub|s<rsub|k>>)\|<rsup|2>.>>>>
+    <tformat|<table|<row|<cell|E\|W<rsub|s<rsub|k>>(W<rsub|s<rsub|k+1>>-W<rsub|s<rsub|k>>)\|<rsup|2>>|<cell|\<neq\>>|<cell|E\|W<rsub|s<rsub|k+1>>(W<rsub|s<rsub|k+1>>-W<rsub|s<rsub|k>>)\|<rsup|2>>>|<row|<cell|\<\|\|\><space|2em>>|<cell|>|<cell|<space|2em><neg|\<\|\|\>>>>|<row|<cell|E\|W<rsub|s<rsub|k>>\|<rsup|2>E\|W<rsub|s<rsub|k+1>>-W<rsub|s<rsub|k>>\|<rsup|2>>|<cell|>|<cell|E\|W<rsub|s<rsub|k-1>>(W<rsub|s<rsub|k+1>>-W<rsub|s<rsub|k>>)\|<rsup|2>>>|<row|<cell|\<\|\|\><space|2em>>|<cell|>|<cell|<space|2em><neg|\<\|\|\>>>>|<row|<cell|s<rsub|k>(s<rsub|k+1>-s<rsub|k>)>|<cell|>|<cell|E\|W<rsub|<frac|s<rsub|k+1>+s<rsub|k>|2>>(W<rsub|s<rsub|k+1>>-W<rsub|s<rsub|k>>)\|<rsup|2>.>>>>
   </eqnarray*>
 
   <em|Problem:> Compute each of the above expectations, and show they are not
@@ -686,6 +686,224 @@
   (but not a step function), and if <with|mode|math|<big|int><rsub|0><rsup|T>E*f<rsup|2>(s)\<mathd\>s\<less\>\<infty\>><with|mode|math|\<Rightarrow\>>
   could be approximated by a sequence of step functions
   <with|mode|math|f<rsub|n>(s)\<rightarrow\>f(s)>.
+
+  [Insert <with|font-family|tt|lecture6.pdf> here, courtesy of Mario.]
+
+  <new-page>
+
+  <subsection|Itô's Formula>
+
+  Suppose we have a partition of a time interval <with|mode|math|(0,T)> as
+  <with|mode|math|t<rsub|0>=0,t<rsub|1>,t<rsub|2>,\<ldots\>,t<rsub|n>=T>.
+  <with|mode|math|\<Delta\>t<rsub|i>=t<rsub|i+1>-t<rsub|i>>. We assume
+  <with|mode|math|max \<Delta\>t<rsub|i>\<rightarrow\>0>. Also, we assume we
+  have a function
+
+  <\equation*>
+    f=f(t),<space|1em>\<Delta\>f<rsub|i>=f(t<rsub|i+1>)+f(t<rsub|i>).
+  </equation*>
+
+  <\enumerate-alpha>
+    <item>If <with|mode|math|f=f(t)>, continuous, bounded variation. Then
+
+    <\equation*>
+      lim<rsub|max \<Delta\>t<rsub|i>\<rightarrow\>0><big|sum><rsub|i=0><rsup|n-1>\|\<Delta\>f<rsub|i>\|<rsup|2>=lim<rsub|max
+      \<Delta\>t<rsub|i>\<rightarrow\>0>max<wide*|\|\<Delta\>f<rsub|i>\||\<wide-underbrace\>><rsub|\<rightarrow\>0><wide*|<big|sum><rsub|i=0><rsup|n-1>\|\<Delta\>f<rsub|i>\||\<wide-underbrace\>><rsub|<with|mode|text|variation>\<rightarrow\><with|mode|text|bounded>>=0.
+    </equation*>
+
+    <item>If <with|mode|math|W=W(t)> is Standard Brownian Motion, then
+
+    <\equation*>
+      lim<rsub|max \<Delta\>t<rsub|i>><big|sum><rsub|i=0><rsup|n-1>\|\<Delta\>W<rsub|i>\|<rsup|2>=T<space|1em>(<with|mode|text|in
+      <with|mode|math|L<rsup|2>> and in probability>).
+    </equation*>
+
+    <\proof>
+      We need <with|mode|math|E\|<big|sum>\|\<Delta\>W<rsub|i>\|<rsup|2>\|-T\|<rsup|2>\<rightarrow\>0>.
+      So
+
+      <\eqnarray*>
+        <tformat|<table|<row|<cell|>|<cell|>|<cell|E<left|(><left|(><big|sum><rsub|i>(\<Delta\>W<rsub|i>)<rsup|2><right|)><rsup|2>-2<big|sum><rsub|i>(\<Delta\>W<rsub|i>)<rsup|2>T+T<rsup|2><right|)>>>|<row|<cell|>|<cell|=>|<cell|E<left|[><big|sum><rsub|i,j>\|\<Delta\>W<rsub|i>\|<rsup|2>\|\<Delta\>W<rsub|j>\|<rsup|2>-2T<rsup|2>+T<rsup|2><right|]>>>|<row|<cell|>|<cell|=>|<cell|E<left|[><big|sum><rsub|i=0><rsup|n-1>\|\<Delta\>W<rsub|i>\|<rsup|4>+<big|sum><rsub|i\<neq\>j>\|\<Delta\>W<rsub|i>\|<rsup|2>\|\<Delta\>W<rsub|j>\|<rsup|2>-T<rsup|2><right|]>>>|<row|<cell|>|<cell|=>|<cell|3<big|sum><rsub|i>\|\<Delta\>t<rsub|i>\|<rsup|2>+<big|sum><rsub|i\<neq\>j>\<Delta\>t<rsub|i>\<Delta\>t<rsub|j>-T<rsup|2>>>|<row|<cell|>|<cell|=>|<cell|2<big|sum><rsub|i>\|\<Delta\>t<rsub|i>\|<rsup|2>+<wide*|<left|(><big|sum><rsub|i>\|\<Delta\>t<rsub|i>\|<right|)><rsup|2>|\<wide-underbrace\>><rsub|T<rsup|2>>-T<rsup|2>>>|<row|<cell|>|<cell|=>|<cell|2<big|sum><rsub|i>\|\<Delta\>t<rsub|i>\|<rsup|2>\<leqslant\>2max{\<Delta\>t<rsub|i>}\<cdot\>T\<rightarrow\>0.>>>>
+      </eqnarray*>
+    </proof>
+
+    So we essentially showed:
+
+    <\eqnarray*>
+      <tformat|<table|<row|<cell|<big|sum><rsub|i=0><rsup|n-1>\|\<Delta\>W<rsub|i>\|<rsup|2>>|<cell|\<rightarrow\>>|<cell|T,>>|<row|<cell|(\<mathd\>W)<rsup|2>>|<cell|\<rightarrow\>>|<cell|\<mathd\>t,>>|<row|<cell|\<mathd\>W>|<cell|\<rightarrow\>>|<cell|<sqrt|\<mathd\>t>.<space|1em>(<with|mode|text|not
+      rigorous>)>>>>
+    </eqnarray*>
+  </enumerate-alpha>
+
+  <subsubsection|Deriving from the Chain Rule>
+
+  if <with|mode|math|x=x(t)\<in\>C<rsup|1>> and
+  <with|mode|math|F=F(y)\<in\>C<rsup|1>>. Then
+
+  <\equation*>
+    <frac|\<mathd\>|\<mathd\>t>F(x(t))=F<rprime|'>(x(t))x<rprime|'>(t).
+  </equation*>
+
+  Alternatively,
+
+  <\equation*>
+    x(t)=x(0)+<big|int><rsub|0><rsup|t><wide*|f(s)|\<wide-underbrace\>><rsub|x<rprime|'>(s)>\<mathd\>s.
+  </equation*>
+
+  Then
+
+  <\equation*>
+    F(x(t))=F(x(0))+<big|int><rsub|0><rsup|t>F<rprime|'>(x(s))f(s)\<mathd\>s.
+  </equation*>
+
+  First of all, there is no ``Stratonovich Formula''. Suppose
+  <with|mode|math|W<rsup|n>\<rightrightarrows\>W> (double arrows: uniformly),
+  then
+
+  <\eqnarray*>
+    <tformat|<table|<row|<cell|X<rsup|n>(t)>|<cell|=>|<cell|X(0)+<wide*|<big|int><rsub|0><rsup|t>A(s)\<mathd\>s+<big|int><rsub|0><rsup|t>B(s)<wide|W<rsup|n>|\<dot\>>(s)\<mathd\>s|\<wide-underbrace\>><rsub|=<big|int><rsub|0><rsup|t>(X<rsup|n>)<rprime|'>(s)\<mathd\>s>,>>|<row|<cell|X(t)>|<cell|=>|<cell|X(0)+<big|int><rsub|0><rsup|t>A(s)\<mathd\>s+<wide*|<big|int><rsub|0><rsup|t>B(s)\<circ\>\<mathd\>W(s)|\<wide-underbrace\>><rsub|<with|mode|text|Stratonovich
+    Int.>>.>>|<row|<cell|F(X<rsup|n>(t))>|<cell|=>|<cell|F(X(0))+<big|int><rsub|0><rsup|t>F<rprime|'>(X<rsup|n>(s))A(s)\<mathd\>s+<big|int><rsub|0><rsup|t>F<rprime|'>(X<rsup|n>(s))B(s)<wide|W<rsup|n>|\<dot\>>(s)\<mathd\>s>>|<row|<cell|F(X(t))>|<cell|=>|<cell|F(X(0))+<big|int><rsub|0><rsup|t>F<rprime|'>(X(s))A(s)\<mathd\>s+<big|int><rsub|0><rsup|t>F<rprime|'>(X(s))B(s)\<circ\>(s)\<mathd\>W(s).>>>>
+  </eqnarray*>
+
+  In particular,
+
+  <\equation*>
+    X=W(t)=<big|int><rsub|0><rsup|t>1\<circ\>\<mathd\>W(s),<space|1em>F(y)=y<rsup|2>,<space|1em><big|int><rsub|0><rsup|t>W(s)\<circ\>\<mathd\>W(s)=<frac|1|2>W<rsup|2>(t).
+  </equation*>
+
+  <\remark>
+    Itô integral is a martingale, Stratonovich is <em|not>. Also: there is no
+    connection between the two in the non-smooth case.
+  </remark>
+
+  Now, let's see what happens for Itô, again starting from a process
+  <with|mode|math|X(t)> given as
+
+  <\eqnarray*>
+    <tformat|<table|<row|<cell|X(t)>|<cell|=>|<cell|X(0)+<big|int><rsub|0><rsup|t>A(s)\<mathd\>s+<big|int><rsub|0><rsup|t>B(s)\<mathd\>W(s).>>>>
+  </eqnarray*>
+
+  Now, what is <with|mode|math|F(X(t))>? Let's look at a Taylor expansion of
+
+  <\equation*>
+    F(X(t<rsub|i+1>))-F(X(t<rsub|i>))=F<rprime|'>(X(t<rsub|i>))\<Delta\>x<rsub|i>+<frac|1|2>F<rprime|''>(X(t<rsub|i>))(\<Delta\>x<rsub|i>)<rsup|2>+(\<cdots\>)<wide*|(\<Delta\>x<rsub|i>)<rsup|3>|\<wide-underbrace\>><rsub|\<sim\>(\<Delta\>t)<rsup|3/2>>
+  </equation*>
+
+  So, in continuous time
+
+  <\eqnarray*>
+    <tformat|<table|<row|<cell|F(X(t))>|<cell|=>|<cell|<big|sum>\<Delta\>F>>|<row|<cell|>|<cell|=>|<cell|F(X(0))+<big|int><rsub|0><rsup|t>F<rprime|'>(X(s))\<mathd\>X(s)+<frac|1|2><big|int><rsub|0><rsup|t>F<rprime|''>(X(s))(\<mathd\>X(s))<rsup|2>>>|<row|<cell|>|<cell|=>|<cell|F(X(0))+<big|int><rsub|0><rsup|t>F<rprime|'>(X(s))A(s)\<mathd\>s+<big|int><rsub|0><rsup|t>F<rprime|'>(X(s))B(s)\<mathd\>W(s)+<frac|1|2><big|int><rsub|0><rsup|t>F<rprime|''>(X(s))B<rsup|2>(s)\<mathd\>s>>>>
+  </eqnarray*>
+
+  <\theorem>
+    If
+
+    <\equation*>
+      X(t)=X(0)+<big|int><rsub|0><rsup|t>A(s)\<mathd\>s+<big|int><rsub|0><rsup|t>B(s)\<mathd\>W(s)
+    </equation*>
+
+    and <with|mode|math|F\<in\>C<rsup|3>>, then
+
+    <\equation*>
+      F(X(t))=F(X(0))+<big|int><rsub|0><rsup|t>F<rprime|'>(X(s))A(s)\<mathd\>s+<big|int><rsub|0><rsup|t>F<rprime|'>(X(s))B(s)\<mathd\>W(s)+<frac|1|2><big|int><rsub|0><rsup|t>F<rprime|''>(X(s))B<rsup|2>(s)\<mathd\>s.
+    </equation*>
+  </theorem>
+
+  Now if <with|mode|math|F\<in\>C<rsup|3>(\<bbb-R\><rsup|n>,\<bbb-R\><rsup|n>)>,then
+
+  <\equation*>
+    X(t)=X(0)+<big|int><rsub|0><rsup|t>A(s)\<mathd\>s+<big|int><rsub|0><rsup|t>B(s)\<mathd\>W(s)\<in\>\<bbb-R\><rsup|n>,
+  </equation*>
+
+  where we recall that <with|mode|math|W\<in\>\<bbb-R\><rsup|p>> with all
+  <with|mode|math|p> components independent. Itô's Formula in multiple
+  dimensions takes the form
+
+  <\equation*>
+    F<rsub|k>(X(t))=F<rsub|k>(X(0))+<big|int><rsub|0><rsup|t><big|sum><rsub|i><frac|\<partial\>F<rsub|k>|\<partial\>x<rsub|i>>A<rsub|i>\<mathd\>s+<big|sum><rsub|i,l><big|int><rsub|0><rsup|t><frac|\<partial\>F<rsub|k>|\<partial\>x<rsub|i>>B<rsub|i,l>\<mathd\>W<rsub|l>+<frac|1|2><big|int><rsub|0><rsup|t><big|sum><rsub|i,j><frac|\<partial\>F<rsub|k>|\<partial\>x<rsub|i>\<partial\>x<rsub|j>><big|sum><rsub|l>B<rsub|i
+    l>B<rsub|j l>\<mathd\>s.
+  </equation*>
+
+  <\example>
+    If <with|mode|math|F(x)=x<rsup|2> > and
+
+    <\equation*>
+      X=<big|int><rsub|0><rsup|t>\<mathd\>W(s),
+    </equation*>
+
+    then
+
+    <\equation*>
+      <big|int><rsub|0><rsup|t>W(s)\<mathd\>W(s)=<frac|1|2>(W<rsup|2>(t)-t).
+    </equation*>
+  </example>
+
+  <\example>
+    If <with|mode|math|\<Delta\>F=0> (i.e. <with|mode|math|F> is harmonic),
+    then <with|mode|math|F(W(t))> is a martingale.
+  </example>
+
+  <subsubsection|SODEs>
+
+  <\equation*>
+    X(t)=X(0)+<big|int><rsub|0><rsup|t>b(s,X(s))\<mathd\>s+<big|int><rsub|0><rsup|t>\<sigma\>(s,X(s))\<mathd\>W(s)
+  </equation*>
+
+  or, equivalently
+
+  <\equation*>
+    \<mathd\>X=b(t,X)\<mathd\>t+\<sigma\>(t,X)\<mathd\>W(t).
+  </equation*>
+
+  <\example>
+    1.0U Process (<with|color|red|what?>) The equation
+
+    <\equation*>
+      \<mathd\>X(t)=a*X(t)\<mathd\>t+b*\<mathd\>W(t)
+    </equation*>
+
+    has the solution
+
+    <\equation*>
+      X(t)=e<rsup|a*t>X(0)+b<big|int><rsub|0><rsup|t>e<rsup|a(t-s)>\<mathd\>W(s).
+    </equation*>
+  </example>
+
+  <\example>
+    (<em|Geometric Brownian Motion>)
+
+    <\equation*>
+      \<mathd\>X(t)=a*X(t)+b*X(t)
+    </equation*>
+
+    is solved by
+
+    <\equation*>
+      X(t)=X(0)e<rsup|(a-b<rsup|2>/2)t+b*W(t)>.
+    </equation*>
+
+    (Check this by Itô.)
+  </example>
+
+  <em|Homework:> Solve
+
+  <\equation*>
+    \<mathd\>X(t)=a<rsub|1>t+a<rsub|2>X(t)+(b<rsub|1>+b<rsub|2>X)\<mathd\>W(t).
+  </equation*>
+
+  <\theorem>
+    If <with|mode|math|\|b<rsub|i>(s,x)-b<rsub|i>(s,y)\|+\|\<sigma\><rsub|i,k>(s,x)-\<sigma\><rsub|i,k>(s,y)\<leqslant\>C\|x-y\|>
+    (a Lipschitz condition) and <with|mode|math|\|b<rsub|i>(s,x)\|+\|\<sigma\><rsub|i,k>(s,x)\|\<leqslant\>C(1+\|X\|)>
+    (a linear growth condition) and <with|mode|math|X(0)> is independent of
+    <with|mode|math|W> and <with|mode|math|E\|X(0)\|<rsup|2>\<less\>\<infty\>>,
+    then there exists a solution <with|mode|math|X(t)> that is continuous in
+    time. <with|mode|math|X(t)> is measurable w.r.t
+    <with|mode|math|\<sigma\>(X(0),W(s),s\<leqslant\>t)> and
+
+    <\equation*>
+      E<left|[>sup<rsub|t\<leqslant\>T>\|X(t)\|<rsup|2><right|]>\<less\>\<infty\>.
+    </equation*>
+  </theorem>
 </body>
 
 <\initial>
@@ -697,12 +915,16 @@
 <\references>
   <\collection>
     <associate|auto-1|<tuple|1|1>>
+    <associate|auto-10|<tuple|2.2.2|?>>
+    <associate|auto-11|<tuple|2.3|?>>
     <associate|auto-2|<tuple|1.1|2>>
     <associate|auto-3|<tuple|1.2|3>>
     <associate|auto-4|<tuple|1.3|4>>
     <associate|auto-5|<tuple|1.4|4>>
     <associate|auto-6|<tuple|2|6>>
-    <associate|auto-7|<tuple|2.1|?>>
+    <associate|auto-7|<tuple|2.1|7>>
+    <associate|auto-8|<tuple|2.2|8>>
+    <associate|auto-9|<tuple|2.2.1|9>>
     <associate|def:bm-def2|<tuple|1.18|4>>
     <associate|eq:ce-example-exp|<tuple|1.1|3>>
   </collection>
@@ -734,6 +956,22 @@
       <vspace*|1fn><with|font-series|<quote|bold>|math-font-series|<quote|bold>|2<space|2spc>The
       Itô Integral and Formula> <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
       <no-break><pageref|auto-6><vspace|0.5fn>
+
+      <with|par-left|<quote|1.5fn>|2.1<space|2spc>The Itô Construction
+      <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
+      <no-break><pageref|auto-7>>
+
+      <with|par-left|<quote|1.5fn>|2.2<space|2spc>Itô's Formula
+      <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
+      <no-break><pageref|auto-8>>
+
+      <with|par-left|<quote|3fn>|2.2.1<space|2spc>Deriving from the Chain
+      Rule <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
+      <no-break><pageref|auto-9>>
+
+      <with|par-left|<quote|3fn>|2.2.2<space|2spc>SODEs
+      <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
+      <no-break><pageref|auto-10>>
     </associate>
   </collection>
 </auxiliary>
