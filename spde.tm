@@ -867,13 +867,27 @@
     <\equation*>
       X(t)=e<rsup|a*t>X(0)+b<big|int><rsub|0><rsup|t>e<rsup|a(t-s)>\<mathd\>W(s).
     </equation*>
+
+    <\proof>
+      Consider
+
+      <\eqnarray*>
+        <tformat|<table|<row|<cell|X<rsub|t>>|<cell|=>|<cell|e<rsup|a*t>X(0)+b<big|int><rsub|0><rsup|t>e<rsup|a(t-s)>\<mathd\>W<rsub|s>>>|<row|<cell|>|<cell|=>|<cell|e<rsup|a*t>X(0)+b*e<rsup|a*t><big|int><rsub|0><rsup|t>e<rsup|-a*s>\<mathd\>W<rsub|s>>>|<row|<cell|>|<cell|=>|<cell|e<rsup|a*t>X(0)+b*e<rsup|a*t>Z<rsub|t>>>|<row|<cell|>|<cell|=>|<cell|g(t,Z<rsub|t>)<space|1em><with|mode|text|with><space|1em>\<mathd\>Z<rsub|t>=e<rsup|-a*t>\<mathd\>W<rsub|t>.>>>>
+      </eqnarray*>
+
+      Ito's Formula then gives
+
+      <\eqnarray*>
+        <tformat|<table|<row|<cell|\<mathd\>X<rsub|t>>|<cell|=>|<cell|<frac|\<partial\>g|\<partial\>t>\<mathd\>t+<frac|\<partial\>g|\<partial\>x>\<mathd\>Z<rsub|t>+<frac|1|2><frac|\<partial\><rsup|2>g|\<partial\>x<rsup|2>>(\<mathd\>Z<rsub|t>)<rsup|2>>>|<row|<cell|>|<cell|=>|<cell|X(0)a*e<rsup|a*t>+b*e<rsup|a*t>\<mathd\>Z<rsub|t>+0>>|<row|<cell|>|<cell|=>|<cell|X(0)a*e<rsup|a*t>+b*e<rsup|a*t>e<rsup|-a*t>\<mathd\>W<rsub|t>>>|<row|<cell|>|<cell|=>|<cell|X(0)a*e<rsup|a*t>+b*\<mathd\>W<rsub|t>.>>>>
+      </eqnarray*>
+    </proof>
   </example>
 
   <\example>
     (<em|Geometric Brownian Motion>)
 
     <\equation*>
-      \<mathd\>X(t)=a*X(t)+b*X(t)
+      \<mathd\>X(t)=a*X(t)\<mathd\>t+b*X(t)\<mathd\>W(t)
     </equation*>
 
     is solved by
@@ -888,7 +902,7 @@
   <em|Homework:> Solve
 
   <\equation*>
-    \<mathd\>X(t)=a<rsub|1>t+a<rsub|2>X(t)+(b<rsub|1>+b<rsub|2>X)\<mathd\>W(t).
+    \<mathd\>X(t)=(a<rsub|1>+a<rsub|2>X(t))\<mathd\>t+(b<rsub|1>+b<rsub|2>X)\<mathd\>W(t).
   </equation*>
 
   <\theorem>
@@ -904,6 +918,177 @@
       E<left|[>sup<rsub|t\<leqslant\>T>\|X(t)\|<rsup|2><right|]>\<less\>\<infty\>.
     </equation*>
   </theorem>
+
+  <section|Heat Equation>
+
+  <\equation*>
+    u<rsub|t>=a*u<rsub|x x>,<space|1em>u(0,x)=u<rsub|0>(x).
+  </equation*>
+
+  (<with|mode|math|a\<gtr\>0>--ellipticity: if it holds, then the equation is
+  called parabolic) General solution:
+
+  <\equation*>
+    u(t,x)=<frac|1|<sqrt|4\<pi\>*a*t>><big|int><rsub|R>exp<left|(>-<frac|2\|x-y\|<rsup|2>|4*a*t><right|)>u<rsub|0>(y)\<mathd\>y=E[u<rsub|0>(x+<sqrt|2\<pi\>>W(t)]
+  </equation*>
+
+  (<em|Feynman-Kac> formula--averaging over characteristics)
+
+  Monte-Carlo simulation:
+
+  <\equation*>
+    area(A)=<frac|<with|mode|text|#hits in a set
+    <with|mode|math|A>>|<with|mode|text|#hits in a surrounding square>>.
+  </equation*>
+
+  More general parabolic equation:
+
+  <\equation*>
+    u<rsub|t>(x,t)=a<rsub|i j>D<rsub|i>D<rsub|j>u(x,t)+b<rsub|i>D<rsub|i>u(x,t)+c*u+f<space|1em>(t\<gtr\>0,x\<in\>\<bbb-R\><rsup|d>)<space|1em>u(0,x)=u<rsub|0>(x)
+  </equation*>
+
+  This equation is parabolic iff <with|mode|math|a<rsub| i j>y<rsub|i>
+  y<rsub|j>\<geqslant\>a\|y\|<rsup|2>> for all
+  <with|mode|math|y\<in\>\<bbb-R\><rsup|d>> (the ellipticity property). If
+  the highest order partial differential operator in the equation is
+  elliptic, then the equation is parabolic. (The elliptic equation would be
+
+  <\equation*>
+    a<rsub|i j>D<rsub|i>D<rsub|j>u(x,t)+b<rsub|i>D<rsub|i>u(x,t)+c*u+f=0.)
+  </equation*>
+
+  Now, onwards to <em|Stochastic> PDEs. A model equation is
+
+  <\equation*>
+    \<mathd\>u(t,x)=a*u<rsub|x x>(t,x)\<mathd\>t+\<sigma\>u<rsub|x>(t,x)\<mathd\>W<rsub|t>.
+  </equation*>
+
+  Recall from geometric Brownian motion:
+
+  <\equation*>
+    \<mathd\>u(t)=a*u(t)\<mathd\>t+\<sigma\>u(t)\<mathd\>W<rsub|t>,<space|1em>u(0)=0.
+  </equation*>
+
+  The solution is
+
+  <\equation*>
+    u(t)=u<rsub|0>exp<left|(><left|(>a-<frac|\<sigma\><rsup|2>|2><right|)>+\<sigma\>W<rsub|t><right|)>
+  </equation*>
+
+  and
+
+  <\equation*>
+    E[u<rsup|2>(t)]=u<rsub|0><rsup|2>exp{u*t}E[exp<left|{>2\<sigma\>W<rsub|t>-\<sigma\><rsup|2>t<rsup|2><right|}>].
+  </equation*>
+
+  Now consider
+
+  <\equation*>
+    E<left|[><wide*|exp<left|(>b*W<rsub|t>-<frac|1|2>b<rsup|2>t<right|)>|\<wide-underbrace\>><rsub|\<rho\>(t)><right|]>=1,
+  </equation*>
+
+  which is an example of an <em|exponential martingale>, which satisfies the
+  general property
+
+  <\equation*>
+    E[\<rho\>(t)\|\<cal-F\><rsub|s><rsup|W>]=\<rho\>(s)<space|1em><with|mode|text|for><space|1em>s\<less\>t,<space|1em>\<rho\>(0)=1.
+  </equation*>
+
+  We find
+
+  <\equation*>
+    E(\<rho\>(t)]=E[\<rho\>(s)]=E[\<rho\>(0)]=1.
+  </equation*>
+
+  <\proof>
+    By Ito's formula,
+
+    <\equation*>
+      \<mathd\>\<rho\>(t)=b\<rho\>(t)\<mathd\>W<rsub|t><space|1em>\<Rightarrow\><space|1em>\<rho\>(t)=1+b<big|int><rsub|0><rsup|t>\<rho\>(s)\<mathd\>W<rsub|s>.
+    </equation*>
+
+    \;
+  </proof>
+
+  Here's a crude analogy: In stochastic analysis, <with|mode|math|\<rho\>(t)>
+  plays the role of <with|mode|math|exp(t)> in ``regular'' real analysis.
+  Going back to our above computation, we find
+
+  <\equation*>
+    E[u<rsup|2>(t)]=u<rsub|0><rsup|2>exp{u*t}E[exp<left|{>2\<sigma\>W<rsub|t>-\<sigma\><rsup|2>t<rsup|2><right|}>]=u<rsub|0>exp<left|{>2a*t<right|}>.
+  </equation*>
+
+  So we find for geometric Brownian motion that it remains square-integrable
+  for all time. (Consider that this is also the case for the regular heat
+  equation.) Now, let's return to our SPDE,
+
+  <\equation*>
+    \<mathd\>u(t,x)=a*u<rsub|x x>(t,x)\<mathd\>t+\<sigma\>u<rsub|x>(t,x)\<mathd\>W<rsub|t>.
+  </equation*>
+
+  We begin by applying the Fourier transform to <with|mode|math|u>, yielding
+  <with|mode|math|<wide|u|^>>.
+
+  <\equation*>
+    \<mathd\><wide|u|^>=-a*y<rsup|2><wide|u|^>+i\<sigma\>y<wide|u|^>(t,y)\<mathd\>W<rsub|t>
+  </equation*>
+
+  <\equation*>
+    <wide|u|^>=<wide|u|^>(0,y)exp(-<left|(>a-\<sigma\><rsup|2>/2)y<rsup|2>t<right|)>+i*y\<sigma\>W<rsub|t>).
+  </equation*>
+
+  Parseval's equality tells us
+
+  <\equation*>
+    <big|int>\|u(t,x)\|<rsup|2>=<big|int>\|<wide|u|^>(t,y)\|<rsup|2>\<mathd\>y\<less\>\<infty\>
+  </equation*>
+
+  iff <with|mode|math|a-\<sigma\><rsup|2>/2\<gtr\>0>. In SPDEs, first order
+  derivatives in stochastic terms has the same strength as the second
+  derivative in deterministic terms. The above condition is also called
+  <em|super-ellipticity>, and the whole evolution equation is then called
+  <em|super-parabolic>.
+
+  There's another example of SPDE in the lecture notes:
+
+  <\equation*>
+    \<mathd\>u(t,x)=a*u<rsub|x x>(t,x)\<mathd\>t+\<sigma\>u(t,x)\<mathd\>W<rsub|t>.
+  </equation*>
+
+  Here, the superellipticity equation is
+
+  <\equation*>
+    a-<frac|0<rsup|2>|2>\<gtr\>0<space|1em>\<Leftrightarrow\><space|1em>a\<gtr\>0.
+  </equation*>
+
+  For the homework, see the notes as well. One of these problems is to
+  consider the more general equation
+
+  <\equation*>
+    \<mathd\>u=a<rsub|i j>D<rsub|i>D<rsub|j>u+b<rsub|i>D<rsub|i>u+c*u\<mathd\>t+(\<sigma\><rsub|i
+    k>D<rsub|i>u+\<nu\><rsub|k>)\<mathd\>W<rsub|k>(t)<space|1em>i,j=1,\<ldots\>,d,<space|1em>k=1,2,3,\<ldots\>
+  </equation*>
+
+  where we have
+
+  <\equation*>
+    \<sigma\>=<matrix|<tformat|<table|<row|<cell|\<sigma\><rsub|11>>|<cell|\<sigma\><rsub|12>>|<cell|\<cdots\>>>|<row|<cell|\<vdots\>>|<cell|>|<cell|>>|<row|<cell|\<sigma\><rsub|d1>>|<cell|\<sigma\><rsub|d2>>|<cell|\<cdots\>>>>>>.
+  </equation*>
+
+  We have to assume
+
+  <\equation*>
+    \<sigma\>\<sigma\><rsup|\<ast\>>=<big|sum><rsub|k=1><rsup|\<infty\>>\<sigma\><rsub|i
+    k>\<sigma\><rsub|j k>\<less\>\<infty\>,<space|1em><big|sum><rsub|k>\<nu\><rsub|k><rsup|2>\<less\>\<infty\>.
+  </equation*>
+
+  <\equation*>
+    \;
+  </equation*>
+
+  <\equation*>
+    \;
+  </equation*>
 </body>
 
 <\initial>
@@ -916,7 +1101,7 @@
   <\collection>
     <associate|auto-1|<tuple|1|1>>
     <associate|auto-10|<tuple|2.2.2|?>>
-    <associate|auto-11|<tuple|2.3|?>>
+    <associate|auto-11|<tuple|3|?>>
     <associate|auto-2|<tuple|1.1|2>>
     <associate|auto-3|<tuple|1.2|3>>
     <associate|auto-4|<tuple|1.3|4>>
