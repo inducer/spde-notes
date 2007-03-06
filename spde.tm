@@ -1,10 +1,60 @@
 <TeXmacs|1.0.6>
 
-<style|<tuple|article|number-long-article>>
+<style|<tuple|article|number-long-article|spdestyle>>
 
 <\body>
   <doc-data|<doc-title|Stochastic PDEs>|<doc-author-data|<author-name|Boris
   Rozovsky>>>
+
+  <\table-of-contents|toc>
+    <vspace*|1fn><with|font-series|bold|math-font-series|bold|Table of
+    contents> <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
+    <no-break><pageref|auto-1><vspace|0.5fn>
+
+    <vspace*|1fn><with|font-series|bold|math-font-series|bold|1<space|2spc>Basic
+    Facts from Stochastic Processes> <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
+    <no-break><pageref|auto-2><vspace|0.5fn>
+
+    <with|par-left|1.5fn|1.1<space|2spc>Lebesgue Integral
+    <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
+    <no-break><pageref|auto-3>>
+
+    <with|par-left|1.5fn|1.2<space|2spc>Conditional Expectation
+    <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
+    <no-break><pageref|auto-4>>
+
+    <with|par-left|1.5fn|1.3<space|2spc>Stochastic Processes
+    <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
+    <no-break><pageref|auto-5>>
+
+    <with|par-left|1.5fn|1.4<space|2spc>Brownian Motion (Wiener Processes)
+    <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
+    <no-break><pageref|auto-6>>
+
+    <vspace*|1fn><with|font-series|bold|math-font-series|bold|2<space|2spc>The
+    Itô Integral and Formula> <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
+    <no-break><pageref|auto-7><vspace|0.5fn>
+
+    <with|par-left|1.5fn|2.1<space|2spc>The Itô Construction
+    <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
+    <no-break><pageref|auto-8>>
+
+    <with|par-left|1.5fn|2.2<space|2spc>Itô's Formula
+    <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
+    <no-break><pageref|auto-9>>
+
+    <with|par-left|3fn|2.2.1<space|2spc>Deriving from the Chain Rule
+    <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
+    <no-break><pageref|auto-10>>
+
+    <with|par-left|3fn|2.2.2<space|2spc>SODEs
+    <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
+    <no-break><pageref|auto-11>>
+
+    <vspace*|1fn><with|font-series|bold|math-font-series|bold|3<space|2spc>Some
+    SPDEs> <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
+    <no-break><pageref|auto-12><vspace|0.5fn>
+  </table-of-contents>
 
   Send corrections to <with|font-family|tt|kloeckner@dam.brown.edu>.
 
@@ -919,7 +969,7 @@
     </equation*>
   </theorem>
 
-  <section|Heat Equation>
+  <section|Some SPDEs>
 
   <\equation*>
     u<rsub|t>=a*u<rsub|x x>,<space|1em>u(0,x)=u<rsub|0>(x).
@@ -1086,8 +1136,300 @@
     \;
   </equation*>
 
+  A substitution that sometimes helps in the deterministic case is
+  illustrated below:
+
   <\equation*>
+    <frac|\<partial\>u|\<partial\>t>=a(t,x)u<rsub|x x>+c*u
+  </equation*>
+
+  Then we set <with|mode|math|v(t,x)=e<rsup|-c*t>u(t,x)> and obtain
+
+  <\equation*>
+    \<mathd\>v(t,x)=-c*e<rsup|-c*t>u(t,x)+a(t,x)*e<rsup|-c*t>u<rsub|x
+    x>+c*e<rsup|-c*t>u=a(t,x)u*v<rsub|x x>.
+  </equation*>
+
+  For the stochastic case, note:
+
+  <\equation*>
+    \<mathd\>\<rho\>(t)=\<rho\>(t)\<sigma\>\<mathd\>W<rsub|t>.
+  </equation*>
+
+  Then, let
+
+  <\eqnarray*>
+    <tformat|<table|<row|<cell|\<eta\>(t)>|<cell|\<assign\>>|<cell|e<rsup|-\<sigma\>W(t)-(\<sigma\><rsup|2>/2)t>>>|<row|<cell|\<mathd\>\<eta\>(t)>|<cell|=>|<cell|-\<eta\>(t)\<sigma\>\<mathd\>\<Omega\><rsub|t>>>|<row|<cell|\<rho\><rsup|-1>(t)>|<cell|=>|<cell|\<eta\>(t)exp(\<sigma\><rsup|2>t)>>|<row|<cell|\<mathd\>\<rho\><rsup|-1>(t)>|<cell|=>|<cell|-\<eta\>(t)\<sigma\>\<mathd\>W<rsub|t>exp(\<sigma\><rsup|2>t)+\<eta\>(t)exp(\<sigma\><rsup|2>t)\<sigma\><rsup|2>\<mathd\>t=-\<rho\><rsup|-1>\<sigma\>\<mathd\>W<rsub|t>+\<sigma\><rsup|2>\<rho\><rsup|-1>(t)\<mathd\>t>>>>
+  </eqnarray*>
+
+  Applied to an SPDE, we get
+
+  <\eqnarray*>
+    <tformat|<table|<row|<cell|\<mathd\>u(t,x)>|<cell|=>|<cell|a*u(t,x)\<mathd\>t+\<sigma\>u(t,x)\<mathd\>W<rsub|t>>>|<row|<cell|u(0,x)>|<cell|=>|<cell|u<rsub|0>>>|<row|<cell|v(t,x)>|<cell|=>|<cell|<wide*|e<rsup|-\<sigma\>W(t)+(\<sigma\><rsup|2>/2)t>|\<wide-underbrace\>><rsub|\<rho\><rsup|-1>(t)>u(t,x)>>|<row|<cell|\<mathd\>(u(t,x)\<rho\><rsup|-1>(t))>|<cell|=>|<cell|a*v<rsub|x
+    x>\<mathd\>t+\<sigma\>v\<mathd\>W<rsub|t>-v\<sigma\>\<mathd\>W<rsub|t>+\<sigma\><rsup|2>v\<mathd\>t-\<sigma\><rsup|2>v\<mathd\>t>>|<row|<cell|>|<cell|=>|<cell|a*v<rsub|x
+    x>\<mathd\>t.>>>>
+  </eqnarray*>
+
+  Let <with|mode|math|<wide|W|~>(t)> be a Wiener process independent of
+  <with|mode|math|W>.
+
+  <\eqnarray*>
+    <tformat|<table|<row|<cell|v(t,x)>|<cell|=>|<cell|E<left|[>u<rsub|0><left|(>t+<sqrt|2a><wide|W|~><rsub|t><right|)><right|]>.>>>>
+  </eqnarray*>
+
+  Then
+
+  <\eqnarray*>
+    <tformat|<table|<row|<cell|u(t,x)>|<cell|=>|<cell|E<left|[>u<rsub|0><left|(>x+<sqrt|2a><wide|W|~><rsub|t><right|)><right|]>exp(\<sigma\><rsup|2>W<rsub|t>-(\<sigma\><rsup|2>/2)t>>|<row|<cell|>|<cell|=>|<cell|E<left|[>u<rsub|0><left|(>x+<sqrt|2a><wide|W|~><rsub|t><right|)>exp(\<sigma\><rsup|2>W<rsub|t>-(\<sigma\><rsup|2>/2)t<mid|\|>\<cal-F\><rsub|t><rsup|W><right|]>.>>>>
+  </eqnarray*>
+
+  <\example>
+    Now consider
+
+    <\equation*>
+      \<mathd\>u(t,x)=a*u<rsub|x x>(t,x)+\<sigma\>u<rsub|x>(t,x)\<mathd\>W<rsub|t><space|1em>\<Leftrightarrow\><space|1em>2a-\<sigma\><rsup|2>\<gtr\>0.
+    </equation*>
+
+    (Remark: There is not a chance to reduce to
+    <with|mode|math|\<partial\><rsub|t><wide|u|~>=a<wide|u|~><rsub|x x>>.)
+
+    <\eqnarray*>
+      <tformat|<table|<row|<cell|<frac|\<partial\>v|\<partial\>t>>|<cell|=>|<cell|(a-\<sigma\><rsup|2>/2)v<rsub|x
+      x>(t)>>|<row|<cell|u(t,x)>|<cell|=>|<cell|v(t,x+\<sigma\>W(t))<space|1em><with|mode|text|then><space|1em><with|mode|text|<with|mode|math|u>
+      verifies equation>.>>>>
+    </eqnarray*>
+  </example>
+
+  <\eqnarray*>
+    <tformat|<table|<row|<cell|v(t,x)>|<cell|=>|<cell|E<left|[>u<rsub|0><left|(>x+<sqrt|2a-\<sigma\><rsup|2>><wide|W|~>(t)<right|)><right|]>>>|<row|<cell|>|<cell|\<Downarrow\>>|<cell|>>|<row|<cell|u(t,x)>|<cell|=>|<cell|E<left|[>u<rsub|0><left|(>x+W<rsub|t>+<sqrt|2a-\<sigma\><rsup|2>><wide|W|~><rsub|t><right|)><mid|\|>\<cal-F\><rsub|t><rsup|W><right|]>.>>>>
+  </eqnarray*>
+
+  (Note that, as above, the point of the conditional expectation is not
+  measurability w.r.t. time (...), but with respect to <with|mode|math|W> and
+  not w.r.t. <with|mode|math|<wide|W|~>>.) By a naive application of Ito's
+  formula, we would get
+
+  <\eqnarray*>
+    <tformat|<table|<row|<cell|u(t,x)>|<cell|=>|<cell|v(t,x+\<sigma\>W<rsub|t>)>>|<row|<cell|v(t,x)>|<cell|=>|<cell|u(t,x-\<sigma\>W<rsub|t>)>>|<row|<cell|\<mathd\>u(t,x-\<sigma\>W<rsub|t>)>|<cell|=>|<cell|\<sigma\><rsup|2>/2u<rsub|x
+    x>(t,x-\<sigma\>W<rsub|t>)>>|<row|<cell|-\<sigma\>u<rsub|x>(t,x-\<sigma\>W<rsub|t>)\<mathd\>W<rsub|t>>|<cell|=>|<cell|<frac|\<sigma\><rsup|2>|2>v<rsub|x
+    x>\<mathd\>t-\<sigma\>v<rsub|x>\<mathd\>W<rsub|t>.>>>>
+  </eqnarray*>
+
+  But this is wrong because Ito's formula only applies to <em|deterministic>
+  functions of brownian motion. The function <with|mode|math|u> itself is
+  random, though, so it does not work. To the rescue, the Ito-Wentzell
+  formula.
+
+  <\theorem>
+    <dueto|Ito-Wentzell>Suppose
+
+    <\equation*>
+      \<mathd\>F(t,x)=J(t,x)\<mathd\>t+H(t,x)\<mathd\>W<rsub|t>
+    </equation*>
+
+    and
+
+    <\equation*>
+      \<mathd\>Y(t)=b(t)\<mathd\>t+\<sigma\>(\<tau\>)\<mathd\>W<rsub|t>.
+    </equation*>
+
+    Then
+
+    <\equation*>
+      \<mathd\>F(t,Y(t))=<wide*|J(Y(t))\<mathd\>t+H(Y(t))\<mathd\>W<rsub|t>|\<wide-underbrace\>><rsub|\<mathd\><rsub|t>F>+F<rsub|x>(Y(t))b\<mathd\>t+<frac|\<sigma\><rsup|2>|2>F<rsub|x
+      x>(Y(t))\<mathd\>t+\<sigma\>F<rsub|x>(Y(t))\<mathd\>W<rsub|t>
+      +H<rsub|x>(t,Y(t))\<sigma\>(t)\<mathd\>t
+    </equation*>
+
+    For comparison, if we suppose <with|mode|math|\<mathd\>G(t,x)=J(t,x)\<mathd\>t>
+    and work out the regular Ito formula, we would find
+
+    <\equation*>
+      \<mathd\>G(t,Y(t))=<wide*|J(t,Y(t))\<mathd\>t|\<wide-underbrace\>><rsub|\<mathd\><rsub|t>G>+G<rsub|x>(Y(t))b(t)\<mathd\>t+<frac|1|2>G<rsub|x
+      x>\<sigma\><rsup|2>\<mathd\>t+G<rsub|x>(Y)\<mathd\>W<rsub|t>.
+    </equation*>
+  </theorem>
+
+  <section|PDE/Sobolev Recap>
+
+  <\itemize>
+    <item>Spaces: <with|mode|math|H<rsub|2><rsup|\<gamma\>>=H<rsub|2><rsup|\<gamma\>>(\<bbb-R\><rsup|d>)>
+
+    <item>Heat equation: <with|mode|math|H<rsub|2><rsup|\<gamma\>>>,
+    <with|mode|math|L<rsub|2>(\<bbb-R\><rsup|d>)>,
+    <with|mode|math|H<rsub|2><rsup|-1>>.
+
+    <item>an SPDE: <with|mode|math|H<rsub|2><rsup|\<gamma\>>>,
+    <with|mode|math|L<rsub|2>(\<bbb-R\><rsup|d>)>,
+    <with|mode|math|H<rsub|2><rsup|-1>>.
+  </itemize>
+
+  We will need:
+
+  <\itemize>
+    <item>Gronwall Inequality: ...
+
+    <item>BDG Inequality (<with|mode|math|p=1>)
+
+    <\equation*>
+      E<left|\|>sup<rsub|t\<leqslant\>T><big|int><rsub|0><rsup|t>g(s)\<mathd\>W<rsub|s><right|\|>\<leqslant\>C*E<left|\|><big|int><rsub|0><rsup|T>g<rsup|2>(t)\<mathd\>t<right|\|><rsup|1/2>.
+    </equation*>
+
+    <item><with|mode|math|\<varepsilon\>>-inequality
+
+    <\equation*>
+      \|a*b\|\<leqslant\>\<varepsilon\>a<rsup|2>+<frac|1|\<varepsilon\>>b<rsup|2>.
+    </equation*>
+
+    <item>Itô-Wentzell formula.
+  </itemize>
+
+  <subsection|Sobolev Spaces <with|mode|math|H<rsub|2><rsup|\<gamma\>>>>
+
+  <\definition>
+    Suppose <with|mode|math|f\<in\>C<rsub|0><rsup|\<infty\>>(\<bbb-R\><rsup|d>)>.
+    Then
+
+    <\equation*>
+      <wide|f|^>(y)=<frac|1|(2\<pi\>)<rsup|d/2>><big|int><rsub|\<bbb-R\><rsup|d>>e<rsup|-i*x*y>f(x)\<mathd\>x.
+    </equation*>
+  </definition>
+
+  Then we have Parseval's Inequality
+
+  <\equation*>
+    <big|int><rsub|\<bbb-R\><rsup|d>>\|f\|<rsup|2>\<mathd\>x=<big|int><rsub|\<bbb-R\><rsup|d>>\|<wide|f|^>\|<rsup|2>\<mathd\>y
+  </equation*>
+
+  and define
+
+  <\equation*>
+    <norm|f|\<gamma\>|>\<assign\><sqrt|<big|int><rsub|\<bbb-R\><rsup|d>>(1+\|y\|<rsup|2>)<rsup|\<gamma\>>\|<wide|f|^>(y)\|<rsup|2>\<mathd\>y>,
+  </equation*>
+
+  a norm. Then <with|mode|math|H<rsup|2><rsub|\<gamma\>>> is the closure of
+  <with|mode|math|C<rsup|\<infty\>><rsub|0>> in the norm
+  <with|mode|math|<norm|\<cdot\>|y|>>.
+
+  <with|mode|math|\<delta\>(x)>, <with|mode|math|<wide|\<delta\>|^>(x)=const>,
+  <with|mode|math|\<delta\>\<in\>H<rsup|2><rsub|\<gamma\>>> for what
+  <with|mode|math|\<gamma\>>? (<with|mode|math|\<gamma\>\<less\>-d/2?>)
+
+  <with|mode|math|H<rsub|2><rsup|0>=L<rsub|2>>,
+  <with|mode|math|H<rsub|2><rsup|\<gamma\><rsub|1>>\<subset\>H<rsub|2><rsup|\<gamma\><rsub|2>>>
+  if <with|mode|math|\<gamma\><rsub|1>\<gtr\>\<gamma\><rsub|2>>.
+
+  Sobolev embeddings: <with|mode|math|H<rsub|2><rsup|\<gamma\>+d/2>\<subset\>C<rsup|0,\<gamma\>>>
+  if <with|mode|math|0\<less\>\<gamma\>\<less\>1>. Alternative (but
+  equivalent) definition:
+
+  <\equation*>
+    H<rsub|2><rsup|n>={f:f,D f,\<ldots\>,D<rsup|n>f\<in\>L<rsup|2>}
+  </equation*>
+
+  with
+
+  <\equation*>
+    <norm|f|n|>\<sim\><norm|f|L<rsup|2>|>+<big|sum><rsub|k=1><rsup|n><norm|D<rsup|k>f|L<rsup|2>|>.
+  </equation*>
+
+  <with|mode|math|H<rsub|2><rsup|\<gamma\>>> is a Hilbert space with
+
+  <\equation*>
+    <ip|f|g|\<gamma\>|>=<big|int><rsub|\<bbb-R\><rsup|d>>(1+\|y\|<rsup|2>)<rsup|\<gamma\>><wide|f|^>(y)<wide|<wide|g|^>(y)|\<bar\>>\<mathd\>y.
+  </equation*>
+
+  <with|mode|math|H<rsub|2><rsup|\<gamma\>>> is dual to
+  <with|mode|math|H<rsub|2><rsup|-\<gamma\>>> relative to
+  <with|mode|math|L<rsup|2>>. (<with|mode|math|\<gamma\>\<gtr\>0>) Because if
+  <with|mode|math|f\<in\>H<rsub|2><rsup|\<gamma\>>> and
+  <with|mode|math|g\<in\>H<rsub|2><rsup|-\<gamma\>>>. Then
+
+  <\equation*>
+    <ip|f|g|0|>=<big|int><rsub|\<bbb-R\><rsup|d>>(1+\|y\|<rsup|2>)<rsup|\<gamma\>/2><wide|f|^>(y)<frac|<wide|<wide|g|^>(y)|\<bar\>>|(1+\|\<gamma\>\|<rsup|2>)<rsup|\<gamma\>/2>>\<mathd\>y\<leqslant\><norm|f|\<gamma\>|><norm|g|-\<gamma\>|>.
+  </equation*>
+
+  All this by S.L. Sobolev (1908-1989). Derived Sobolev spaces & generalized
+  derivatives in the 1930s.
+
+  <subsection|SPDEs in Sobolev Spaces>
+
+  <subsubsection|Classical Theory>
+
+  Let's consider the heat equation in <with|mode|math|(H<rsub|2><rsup|1>,L<rsub|2>,H<rsub|2><rsup|-1>)>,
+  namely
+
+  <\equation*>
+    u<rsub|t>=u<rsub|x x>+f,<space|1em>u\|<rsub|t=0>=u<rsub|0>.
+  </equation*>
+
+  <\theorem>
+    If <with|mode|math|u> is a classical solution and
+    <with|mode|math|u(t,\<cdot\>)> and <with|mode|math|u<rsub|0>> are in
+    <with|mode|math|C<rsup|\<infty\>><rsub|0>(\<bbb-R\>)>, then
+
+    <\equation*>
+      sup<rsub|t\<leqslant\>T><norm|u(t)|0|2>+<big|int><rsub|0><rsup|T><norm|u(t)|1|2>\<mathd\>t\<leqslant\>C(T)<left|(><norm|u<rsub|0>|0|2>+<big|int><rsub|0><rsup|T><norm|f(t)|-1|2>\<mathd\>t<right|)>.
+    </equation*>
+
+    (Note the slight abuse of notation with
+    <with|mode|math|<norm|u(t)|\<gamma\>|>>.)
+  </theorem>
+
+  <\proof>
     \;
+
+    <\eqnarray*>
+      <tformat|<table|<row|<cell|<big|int>u<frac|\<partial\>u|\<partial\>t>\<mathd\>x>|<cell|=>|<cell|<big|int>u*u<rsub|x
+      x>\<mathd\>x+<big|int>u*f\<mathd\>x<space|1em>\|<big|int>\<cdot\>u\<mathd\>x>>|<row|<cell|\<\|\|\>>|<cell|>|<cell|>>|<row|<cell|<frac|\<mathd\>v|\<mathd\>t>>|<cell|=>|<cell|<norm|u<rsub|x>|0|2>+<ip|u|f<rsub|0>||>\<pm\>2v(t)>>|<row|<cell|v(t)>|<cell|=>|<cell|v(0)-<big|int><rsub|0><rsup|t><left|(><norm|u(s)|0|2>+<norm|u<rsub|x>(s)|0|2><right|)>\<mathd\>s+<big|int><rsub|0><rsup|t><ip|u|f|0|>\<mathd\>s+2<big|int><rsub|0><rsup|t>v(s)\<mathd\>s>>|<row|<cell|v(t)+C<big|int><rsub|0><rsup|t><norm|u(s)|1|2>\<mathd\>s>|<cell|\<leqslant\>>|<cell|v(0)+<big|int><rsub|0><norm|u|1|><norm|f|-1|>\<mathd\>s+2<big|int>v(s)\<mathd\>s+<frac|C|2><big|int><rsub|0><rsup|t><norm|u|1|2>\<mathd\>s+C<rsub|1><big|int><rsub|0><rsup|t><norm|f|-1|2>\<mathd\>s>>|<row|<cell|v(t)+<frac|C|2><big|int><rsub|0><rsup|t><norm|u(s)|1|2>\<mathd\>s>|<cell|\<leqslant\>>|<cell|F+2<big|int><rsub|0><rsup|t>v(s)\<mathd\>s>>|<row|<cell|v(t)>|<cell|\<leqslant\>>|<cell|F+2<big|int><rsub|0><rsup|t>v(s)\<mathd\>s>>|<row|<cell|sup*v(t)>|<cell|\<leqslant\>>|<cell|F.>>>>
+    </eqnarray*>
+
+    where <with|mode|math|v(t)=<frac|1|2><norm|u(t)|0|2>> and all the
+    constant-tweaking is done with the <with|mode|math|\<varepsilon\>>-inequality.
+  </proof>
+
+  <subsubsection|Stochastic Theory>
+
+  <\equation*>
+    \<mathd\>u=(a(t)u<rsub|x x>+f)\<mathd\>t+(\<sigma\>(t)u<rsub|x>+g)\<mathd\>W<rsub|t>,
+  </equation*>
+
+  where <with|mode|math|0\<less\>\<delta\>\<less\>a(t)-\<sigma\><rsup|2>(t)/2\<less\>C<rsup|\<ast\>>>.
+  <with|mode|math|f,g> adapted to <with|mode|math|\<cal-F\><rsub|t><rsup|W>>,
+  <with|mode|math|u,f,g\<in\>C<rsub|0><rsup|\<infty\>>>,
+  <with|mode|math|u\|<rsub|t=0>=u<rsub|0>> independent of <with|mode|math|W>.
+  Then
+
+  <\equation*>
+    E<left|[>sup<norm|u(t)|0|><right|]><rsup|2>+E<big|int><rsub|0><rsup|T><norm|u(t)|1|2>\<mathd\>t\<leqslant\>E<left|(><norm|u<rsub|0>|0|2>+<big|int><rsub|0><rsup|T><norm|f|-1|2>\<mathd\>t+<big|int><rsub|0><rsup|T><norm|g|0|2>\<mathd\>t<right|)>.
+  </equation*>
+
+  <em|Step 1:> WLOG, <with|mode|math|\<sigma\>=0> (check at home!). Use the
+  substitution
+
+  <\equation*>
+    v(t,x)=u<left|(>t,x-<big|int><rsub|0><rsup|t>\<sigma\>(s)\<mathd\>W<rsub|s><right|)>.
+  </equation*>
+
+  <em|Step 2>: Ito formula for <with|mode|math|\|u(t,x)\|<rsup|2>>.
+
+  <\equation*>
+    u<rsup|2>=u<rsub|0><rsup|2>+2<wide*|<big|int><rsub|0><rsup|t>a*u<rsub|x
+    x>*u\<mathd\>s|\<wide-underbrace\>><rsub|-<norm|u|1|2>>+<wide*|<big|int><rsub|0><rsup|t>f*u\<mathd\>s|\<wide-underbrace\>><rsub|\<varepsilon\><norm|u|1|2>+C<norm|f|-1|2>>+<big|int><rsub|0><rsup|t>g*u\<mathd\>W<rsub|s>+<big|int><rsub|0><rsup|t>g<rsup|2>\<mathd\>s.
+  </equation*>
+
+  <em|Step 3:> Take expectation, which kills the
+  <with|mode|math|\<mathd\>W<rsub|s>> term, giving a bound on
+
+  <\equation*>
+    E<big|int><rsub|0><rsup|T><norm|u|1|2>\<mathd\>s<space|1em><with|mode|text|and><space|1em>E<norm|u(t)|0|2>.
+  </equation*>
+
+  <em|Step 4:> Take care of the sup, which is outside of the expectation, but
+  needs to be inside.
+
+  <\equation*>
+    E<left|\|>sup<rsub|t><big|int><rsub|0><rsup|t<rsub|1>>g*u\<mathd\>W<right|\|>\<leqslant\>C*E<left|(><big|int><rsub|0><rsup|T><ip|g|u|0|2>\<mathd\>t<right|)><rsup|1/2>\<leqslant\>C*E<left|[>sup<rsub|t><big|int><rsub|0><rsup|T><norm|g|0|2>\<mathd\>t<right|]>\<leqslant\>\<varepsilon\>Esup<rsub|t><norm|u||2>+C(\<varepsilon\>)<big|int><rsub|0><rsup|t><norm|g|0|2>\<mathd\>s.
   </equation*>
 </body>
 
@@ -1099,17 +1441,23 @@
 
 <\references>
   <\collection>
-    <associate|auto-1|<tuple|1|1>>
-    <associate|auto-10|<tuple|2.2.2|?>>
-    <associate|auto-11|<tuple|3|?>>
-    <associate|auto-2|<tuple|1.1|2>>
-    <associate|auto-3|<tuple|1.2|3>>
-    <associate|auto-4|<tuple|1.3|4>>
-    <associate|auto-5|<tuple|1.4|4>>
-    <associate|auto-6|<tuple|2|6>>
-    <associate|auto-7|<tuple|2.1|7>>
-    <associate|auto-8|<tuple|2.2|8>>
-    <associate|auto-9|<tuple|2.2.1|9>>
+    <associate|auto-1|<tuple|<uninit>|1>>
+    <associate|auto-10|<tuple|2.2.1|?>>
+    <associate|auto-11|<tuple|2.2.2|?>>
+    <associate|auto-12|<tuple|3|?>>
+    <associate|auto-13|<tuple|4|?>>
+    <associate|auto-14|<tuple|4.1|?>>
+    <associate|auto-15|<tuple|4.2|?>>
+    <associate|auto-16|<tuple|4.2.1|?>>
+    <associate|auto-17|<tuple|4.2.2|?>>
+    <associate|auto-2|<tuple|1|2>>
+    <associate|auto-3|<tuple|1.1|3>>
+    <associate|auto-4|<tuple|1.2|4>>
+    <associate|auto-5|<tuple|1.3|4>>
+    <associate|auto-6|<tuple|1.4|6>>
+    <associate|auto-7|<tuple|2|7>>
+    <associate|auto-8|<tuple|2.1|8>>
+    <associate|auto-9|<tuple|2.2|9>>
     <associate|def:bm-def2|<tuple|1.18|4>>
     <associate|eq:ce-example-exp|<tuple|1.1|3>>
   </collection>
@@ -1118,45 +1466,62 @@
 <\auxiliary>
   <\collection>
     <\associate|toc>
+      <vspace*|1fn><with|font-series|<quote|bold>|math-font-series|<quote|bold>|Table
+      of contents> <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
+      <no-break><pageref|auto-1><vspace|0.5fn>
+
       <vspace*|1fn><with|font-series|<quote|bold>|math-font-series|<quote|bold>|1<space|2spc>Basic
       Facts from Stochastic Processes> <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
-      <no-break><pageref|auto-1><vspace|0.5fn>
+      <no-break><pageref|auto-2><vspace|0.5fn>
 
       <with|par-left|<quote|1.5fn>|1.1<space|2spc>Lebesgue Integral
       <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
-      <no-break><pageref|auto-2>>
+      <no-break><pageref|auto-3>>
 
       <with|par-left|<quote|1.5fn>|1.2<space|2spc>Conditional Expectation
       <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
-      <no-break><pageref|auto-3>>
+      <no-break><pageref|auto-4>>
 
       <with|par-left|<quote|1.5fn>|1.3<space|2spc>Stochastic Processes
       <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
-      <no-break><pageref|auto-4>>
+      <no-break><pageref|auto-5>>
 
       <with|par-left|<quote|1.5fn>|1.4<space|2spc>Brownian Motion (Wiener
       Processes) <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
-      <no-break><pageref|auto-5>>
+      <no-break><pageref|auto-6>>
 
       <vspace*|1fn><with|font-series|<quote|bold>|math-font-series|<quote|bold>|2<space|2spc>The
       Itô Integral and Formula> <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
-      <no-break><pageref|auto-6><vspace|0.5fn>
+      <no-break><pageref|auto-7><vspace|0.5fn>
 
       <with|par-left|<quote|1.5fn>|2.1<space|2spc>The Itô Construction
       <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
-      <no-break><pageref|auto-7>>
+      <no-break><pageref|auto-8>>
 
       <with|par-left|<quote|1.5fn>|2.2<space|2spc>Itô's Formula
       <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
-      <no-break><pageref|auto-8>>
+      <no-break><pageref|auto-9>>
 
       <with|par-left|<quote|3fn>|2.2.1<space|2spc>Deriving from the Chain
       Rule <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
-      <no-break><pageref|auto-9>>
+      <no-break><pageref|auto-10>>
 
       <with|par-left|<quote|3fn>|2.2.2<space|2spc>SODEs
       <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
-      <no-break><pageref|auto-10>>
+      <no-break><pageref|auto-11>>
+
+      <vspace*|1fn><with|font-series|<quote|bold>|math-font-series|<quote|bold>|3<space|2spc>Some
+      SPDEs> <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
+      <no-break><pageref|auto-12><vspace|0.5fn>
+
+      <vspace*|1fn><with|font-series|<quote|bold>|math-font-series|<quote|bold>|4<space|2spc>PDE/Sobolev
+      Recap> <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
+      <no-break><pageref|auto-13><vspace|0.5fn>
+
+      <with|par-left|<quote|1.5fn>|4.1<space|2spc>Sobolev Spaces
+      <with|mode|<quote|math>|H<rsub|2><rsup|\<gamma\>>>
+      <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
+      <no-break><pageref|auto-14>>
     </associate>
   </collection>
 </auxiliary>
