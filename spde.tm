@@ -54,6 +54,52 @@
     <vspace*|1fn><with|font-series|bold|math-font-series|bold|3<space|2spc>Some
     SPDEs> <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
     <no-break><pageref|auto-12><vspace|0.5fn>
+
+    <vspace*|1fn><with|font-series|bold|math-font-series|bold|4<space|2spc>PDE/Sobolev
+    Recap> <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
+    <no-break><pageref|auto-13><vspace|0.5fn>
+
+    <with|par-left|1.5fn|4.1<space|2spc>Sobolev Spaces
+    <with|mode|math|H<rsub|2><rsup|\<gamma\>>>
+    <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
+    <no-break><pageref|auto-14>>
+
+    <with|par-left|1.5fn|4.2<space|2spc>SPDEs in Sobolev Spaces
+    <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
+    <no-break><pageref|auto-15>>
+
+    <with|par-left|3fn|4.2.1<space|2spc>Classical Theory
+    <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
+    <no-break><pageref|auto-16>>
+
+    <with|par-left|3fn|4.2.2<space|2spc>Stochastic Theory
+    <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
+    <no-break><pageref|auto-17>>
+
+    <vspace*|1fn><with|font-series|bold|math-font-series|bold|5<space|2spc>Nonlinear
+    Filtering (``Hidden Markov Models'')>
+    <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
+    <no-break><pageref|auto-18><vspace|0.5fn>
+
+    <vspace*|1fn><with|font-series|bold|math-font-series|bold|6<space|2spc>Solutions
+    of PDEs and SPDEs> <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
+    <no-break><pageref|auto-19><vspace|0.5fn>
+
+    <with|par-left|1.5fn|6.1<space|2spc>Classical Solutions
+    <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
+    <no-break><pageref|auto-20>>
+
+    <with|par-left|1.5fn|6.2<space|2spc>Generalized Solutions
+    <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
+    <no-break><pageref|auto-21>>
+
+    <with|par-left|1.5fn|6.3<space|2spc>Mild Solutions
+    <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
+    <no-break><pageref|auto-22>>
+
+    <with|par-left|1.5fn|6.4<space|2spc>Generalization of the notion of a
+    ``solution'' in SDE <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
+    <no-break><pageref|auto-23>>
   </table-of-contents>
 
   Send corrections to <with|font-family|tt|kloeckner@dam.brown.edu>.
@@ -906,7 +952,7 @@
   </equation*>
 
   <\example>
-    1.0U Process (<with|color|red|what?>) The equation
+    <em|Ornstein-Uhlenbeck Process>. The equation
 
     <\equation*>
       \<mathd\>X(t)=a*X(t)\<mathd\>t+b*\<mathd\>W(t)
@@ -1431,6 +1477,392 @@
   <\equation*>
     E<left|\|>sup<rsub|t><big|int><rsub|0><rsup|t<rsub|1>>g*u\<mathd\>W<right|\|>\<leqslant\>C*E<left|(><big|int><rsub|0><rsup|T><ip|g|u|0|2>\<mathd\>t<right|)><rsup|1/2>\<leqslant\>C*E<left|[>sup<rsub|t><big|int><rsub|0><rsup|T><norm|g|0|2>\<mathd\>t<right|]>\<leqslant\>\<varepsilon\>Esup<rsub|t><norm|u||2>+C(\<varepsilon\>)<big|int><rsub|0><rsup|t><norm|g|0|2>\<mathd\>s.
   </equation*>
+
+  <section|Nonlinear Filtering (``Hidden Markov Models'')>
+
+  State/signal <with|mode|math|X<rsub|t>>: Markov process/chain. Observation
+  <with|mode|math|Y<rsub|t>=h(X<rsub|t>)+g<wide|V|\<dot\>>(t)>. State is not
+  observed directly. The inf about <with|mode|math|X<rsub|t>> comes ``only''
+  from <with|mode|math|Y<rsub|s>>, <with|mode|math|s\<leqslant\>t>. Find the
+  best mean-squares estimate of <with|mode|math|f(X<rsub|t>)> given
+  <with|mode|math|Y<rsub|s>>, <with|mode|math|s\<leqslant\>t>, where
+  <with|mode|math|f> is a known function. <em|Claim:> This estimator is given
+  by
+
+  <\eqnarray*>
+    <tformat|<table|<row|<cell|<wide|f|^><rsub|t>>|<cell|\<assign\>>|<cell|E<left|[>f(X<rsub|t>)\|\<cal-F\><rsub|t><rsup|Y><right|]>.>>>>
+  </eqnarray*>
+
+  <\proof>
+    Let <with|mode|math|g<rsub|t>> be an <with|mode|math|\<cal-F\><rsub|t><rsup|Y>>-measurable
+    square-integable function<with|mode|math|\<Leftrightarrow\>><with|mode|math|E[g<rsub|t><rsup|2>]\<less\>\<infty\>>,
+    <with|mode|math|g<rsub|t>=g(Y<rsub|0><rsup|t>)>.
+
+    <\eqnarray*>
+      <tformat|<table|<row|<cell|E[f<rsub|t>-g<rsub|t>]<rsup|2>>|<cell|=>|<cell|E[f(X<rsub|t>)-<wide|f|^><rsub|t>+<wide|f|^><rsub|t>-g<rsub|t>]<rsup|2>>>|<row|<cell|>|<cell|=>|<cell|E[f(Y<rsub|t>)-<wide|f|^>(X<rsub|t>)]<rsup|2>+E[<wide|f|^><rsub|t>-g<rsub|t>]<rsup|2>>>|<row|<cell|>|<cell|\<geqslant\>>|<cell|E[f(X<rsub|t>)-<wide|f|^>(X<rsub|t>)]<rsup|2>+2E[(f(Y<rsub|t>)-<wide|f|^><rsub|t>)(<wide|f|^><rsub|t>-g<rsub|t>)]>>|<row|<cell|>|<cell|=>|<cell|E[E[(f(X<rsub|t>)-<wide|f|^><rsub|t>)(<wide|f|^><rsub|t>-g<rsub|t>)\|\<cal-F\><rsub|t><rsup|Y>]]=0.>>>>
+    </eqnarray*>
+
+    Geometric interpretation: conditional expectation, with respect ot the
+    <with|mode|math|\<sigma\>>-algebra <with|mode|math|\<cal-G\>> is an
+    orthogonal projection on a space of <with|mode|math|\<cal-G\>>-measurable
+    functions.
+
+    <\eqnarray*>
+      <tformat|<table|<row|<cell|<wide|f|^><rsub|t>>|<cell|\<assign\>>|<cell|E[f(X<rsub|t>)\|\<cal-F\><rsub|t><rsup|Y>]>>|<row|<cell|>|<cell|=>|<cell|<big|int>f(x)P(X<rsub|t>\<in\>\<mathd\>x\|\<cal-F\><rsub|t><rsup|Y>).>>>>
+    </eqnarray*>
+  </proof>
+
+  State:
+
+  <\eqnarray*>
+    <tformat|<table|<row|<cell|\<mathd\>X<rsub|t>>|<cell|=>|<cell|b(X<rsub|t>)\<mathd\>t+\<sigma\>(X(t))\<mathd\>W<rsub|t>>>|<row|<cell|\<mathd\>Y<rsub|t>>|<cell|=>|<cell|A(X(t))\<mathd\>t+g(Y<rsub|t>)\<mathd\>V<rsub|t>,>>>>
+  </eqnarray*>
+
+  We assume <with|mode|math|W<rsub|t>> and <with|mode|math|V<rsub|t>> are
+  independent Wiener processes. <with|mode|math|X(0)=x<rsub|0>>,
+  <with|mode|math|Y(0)=0>. Further <with|mode|math|f=f(x)>, with
+  <with|mode|math|sup<rsub|t> E[f(X<rsub|t>)<rsup|2>]\<less\>\<infty\>>.
+
+  <\eqnarray*>
+    <tformat|<table|<row|<cell|<wide|f|^><rsub|t>>|<cell|=>|<cell|E[f(X<rsub|t>)\|\<cal-F\><rsub|t><rsup|Y>].>>>>
+  </eqnarray*>
+
+  <em|Zakai Equation of nonlinear filtering:>
+
+  <\equation*>
+    <wide|f|^><rsub|t>=<frac|<big|int>f(x)u(t,x)\<mathd\>x|<big|int>u(t,x)\<mathd\>x>,
+  </equation*>
+
+  where <with|mode|math|u(t,x)> is a solution of the <with|mode|math|SPDE>
+
+  <\equation*>
+    \<mathd\>u(t,x)=<left|[><frac|1|2>\<sigma\><rsup|2>(x)u(t,x)<rsub|x
+    x>-(b(x)u(t,x))<rsub|x><right|]>\<mathd\>t+h(x)u(t,x)\<mathd\>Y<rsub|t>,
+  </equation*>
+
+  where <with|mode|math|h=g<rsup|-1>A>.
+
+  <\eqnarray*>
+    <tformat|<table|<row|<cell|<wide|P|~>(A)>|<cell|=>|<cell|<big|int><rsub|A>exp<left|{>-<big|int><rsub|0><rsup|T>h\<mathd\>s-<frac|1|2><big|int><rsub|0><rsup|T>h<rsup|2>\<mathd\>V<right|}>\<mathd\>P>>|<row|<cell|\<mathd\>Y<rsub|t>>|<cell|=>|<cell|\<mathd\>V<rsub|t>.>>>>
+  </eqnarray*>
+
+  If we add another term to the state process,
+
+  <\equation*>
+    \<mathd\>X<rsub|t>=b(X<rsub|t>)\<mathd\>t+\<sigma\>(X(t))\<mathd\>W<rsub|t>+f(X(t))\<mathd\>V<rsub|t>,
+  </equation*>
+
+  then we get
+
+  <\equation*>
+    \<mathd\>u(t,x)=<left|[><left|[><frac|1|2>\<sigma\><rsup|2>(x)+\<rho\><rsup|2><right|]>u(t,x)<rsub|x
+    x>-(b(x)u(t,x))<rsub|x><right|]>\<mathd\>t-(\<rho\>u(t,x))<rsub|x>\<mathd\>Y<rsub|t>+h(x)u(t,x)\<mathd\>Y<rsub|t>
+  </equation*>
+
+  as the corresponding Zakai equation. (<with|color|red|not sure about this
+  last equation>)
+
+  <section|Solutions of PDEs and SPDEs>
+
+  <subsection|Classical Solutions>
+
+  Here, we assume that <with|mode|math|u> is twice continuously
+  differentiable in <with|mode|math|x> and once in <with|mode|math|t>.
+
+  <\equation>
+    <label|eq:sol-heat><wide|u|\<dot\>>(t,x)=a(x)u<rsub|x
+    x>,<space|1em>u(0,x)=u<rsub|0>(x).
+  </equation>
+
+  \;
+
+  <subsection|Generalized Solutions>
+
+  First, let us talk about generalized functions. Suppose we wanted to find a
+  derivative of <with|mode|math|f(x)=sign(x)>. Classically,
+  <with|mode|math|f<rprime|'>(0)> does not exist. Let <with|mode|math|g> be a
+  differentiable function and <with|mode|math|\<varphi\>> very smooth with
+  compact support. Then
+
+  <\equation*>
+    <big|int>f\<varphi\><rprime|'>(x)\<mathd\>x=-<big|int>f(x)\<varphi\>(x)\<mathd\>x.
+  </equation*>
+
+  If <with|mode|math|f> is not differentiable,
+
+  <\equation*>
+    <big|int>f<rprime|'>(x)\<varphi\>(x)\<mathd\>x=-<big|int>\<varphi\>(x)\<varphi\><rprime|'>(x)\<mathd\>x
+  </equation*>
+
+  for all <with|mode|math|\<varphi\>\<in\>C<rsub|0><rsup|\<infty\>>(\<bbb-R\><rsup|n>)>.
+
+  Now reconsider the heat equation in a different form, namely
+
+  <\equation>
+    <label|eq:sol-rewritten-heat><wide|u|\<dot\>>(t,x)=(a(x)u<rsub|x>)<rsub|x>,<space|1em>u(0,x)=u<rsub|0>(x).
+  </equation>
+
+  A weak general solution of (<reference|eq:sol-rewritten-heat>) is a
+  function <with|mode|math|u\<in\>H<rsub|2><rsup|1>(\<bbb-R\>)> such that for
+  all <with|mode|math|t\<gtr\>0>
+
+  <\equation*>
+    <ip|u(t)|\<varphi\>||>=<ip|u<rsub|0>|\<varphi\>||>-<big|int><rsub|0><rsup|t><ip|u<rsub|x>|\<varphi\><rsub|x>||>\<mathd\>s
+  </equation*>
+
+  for every function <with|mode|math|\<varphi\>\<in\>C<rsub|0><rsup|\<infty\>>(\<bbb-R\>)>.
+
+  Going back to (<reference|eq:sol-heat>), we find that a generalized
+  solution is also a function from <with|mode|math|H<rsup|1><rsub|2>> so that
+
+  <\equation*>
+    <ip|u(t)|\<varphi\>||>=<ip|u<rsub|0>|\<varphi\>||>-<big|int><rsub|0><rsup|t><ip|u<rsub|x>|(a\<varphi\>)<rsub|x>||>\<mathd\>s
+  </equation*>
+
+  for all <with|mode|math|\<varphi\>\<in\>C<rsub|0><rsup|\<infty\>>(\<bbb-R\>)>.
+
+  This definition is equivalent to saying that
+
+  <\equation*>
+    u(t)=u<rsub|0>+<big|int>a*u<rsub|x x>\<mathd\>s
+  </equation*>
+
+  as an equality in <with|mode|math|H<rsup|-1>>.
+
+  <subsection|Mild Solutions>
+
+  Let us now consider yet another different equation, namely
+
+  <\equation>
+    <label|eq:heat-nonlinear><wide|u|\<dot\>>(t,x)=u<rsub|x
+    x>(t,x)+sin(u(t,x)),<space|1em>u(t,x)=u<rsub|0>(x).
+  </equation>
+
+  Direct differentiation shows
+
+  <\equation*>
+    u(t,x)=<big|int><rsub|\<bbb-R\>>k(t,x-y)u<rsub|0>(y)\<mathd\>y+<big|int><rsub|0><rsup|t><big|int><rsub|\<bbb-R\>>k(t-s,x-y)sin(u(s,y))\<mathd\>y\<mathd\>s,
+  </equation*>
+
+  where <with|mode|math|k> is the heat kernel
+
+  <\equation*>
+    k(t,x-y)=<frac|1|<sqrt|4\<pi\>t>>e<rsup|-<frac|\|x-y\|<rsup|2>|4t>>.
+  </equation*>
+
+  Write this now in SPDE form
+
+  <\equation*>
+    \<mathd\>u(t,x)=a*u<rsub|x x>+f(u(t,x)).
+  </equation*>
+
+  A <em|mild solution> is a solution <with|mode|math|u> that satisfies
+
+  <\equation*>
+    u(t,x)=<big|int><rsub|\<bbb-R\>>k(t,x-y)u<rsub|0>(y)\<mathd\>y+<big|int><rsub|0><rsup|t><big|int><rsub|\<bbb-R\>>k(t-s,x-y)f(u(s,y))\<mathd\>y\<mathd\>s.
+  </equation*>
+
+  <subsection|Generalization of the notion of a ``solution'' in SDE>
+
+  OSDE
+
+  <\equation*>
+    \<mathd\>X<rsub|t>=b(X(t))\<mathd\>t+\<sigma\>(X(t))\<mathd\>W<rsub|t>,<space|1em>X<rsub|0>=x<rsub|0>.
+  </equation*>
+
+  Given <with|mode|math|b>, <with|mode|math|\<sigma\>>,
+  <with|mode|math|x<rsub|0>>, <with|mode|math|(\<Omega\>,P)>,
+  <with|mode|math|W>. If <with|mode|math|b> and <with|mode|math|\<sigma\>>
+  are Lipschitz-continuous and
+
+  <\equation*>
+    \|b(x)\|\<leqslant\>K(1+\|x\|),<space|1em>\|\<sigma\>(x)\|\<leqslant\>K(1+\|x\|)<space|1em>\<Rightarrow\><space|1em>\<exists\>!u.
+  </equation*>
+
+  <em|Tanaka's Example> shows an OSDE that can't be solved in this way:
+
+  <\equation*>
+    \<mathd\>X<rsub|t>=sign(X<rsub|t>)\<mathd\>W<rsub|t>.
+  </equation*>
+
+  This equation has no solution for fixed <with|mode|math|(\<Omega\>,P)>,
+  <with|mode|math|W>. One could find <with|mode|math|(<wide|\<Omega\>|~>,<wide|P|~>)>,
+  <with|mode|math|<wide|W|~>> such that <with|mode|math|\<mathd\>X<rsub|t>=sign(X<rsub|t>)\<mathd\><wide|W|~><rsub|t>>.
+  The mechanism for this is Girsanov's theorem, by which you can kill the
+  drift and obtain a different equation.
+
+  If you specify the measure space and the Wiener process, you are looking
+  for a <em|probabilistically strong soltuion>. If you allow yourself the
+  freedom of choosing these as part of your solution, your solution is
+  <em|probabilistically weak>.
+
+  <section|Existence and Uniqueness>
+
+  <subsection|Scales of Sobolev Spaces>
+
+  Simple Example: <with|mode|math|x\<in\>(0,b)>,
+  <with|mode|math|\<Delta\>\<assign\>\<partial\><rsub|x><rsup|2>>,
+  <with|mode|math|\<Lambda\>\<assign\>1-\<Delta\>>.
+  <with|mode|math|H\<assign\>L<rsup|2>(0,b)>. For smooth functions
+  <with|mode|math|f>, clearly
+
+  <\equation*>
+    <ip|\<Lambda\>f|f|H|>=<ip|(1-\<Delta\>)f|f|H|>=<big|int><rsub|0><rsup|b>f<rsup|2>(X)\<mathd\>x+<big|int><rsub|0><rsup|b>f<rsub|x><rsup|2>\<mathd\>x=:<norm|f|H<rsup|1><rsub|2>|2>.
+  </equation*>
+
+  Let us consider the basis
+
+  <\equation*>
+    <left|{>m<rsub|k>(x)=<sqrt|<frac|2|b>sin<frac|\<pi\>(k-1)x|b>><right|}>,
+  </equation*>
+
+  which is an ONS in <with|mode|math|H>. Observe
+
+  <\equation*>
+    \<Lambda\>m<rsub|k>=(1-\<Delta\>)m<rsub|k>=m<rsub|k>+<left|[><frac|\<pi\>(k-1)|b><right|]><rsup|2>m<rsub|k>=<left|(>1+<left|[><frac|\<pi\>(k-1)|b><right|]><rsup|2><right|)>m<rsub|k>.
+  </equation*>
+
+  Define
+
+  <\equation*>
+    \<lambda\><rsub|k>\<assign\>1+<left|[><frac|\<pi\>(k-1)|b><right|]><rsup|2>
+  </equation*>
+
+  as the eigenvalues of <with|mode|math|\<Lambda\>> w.r.t. the eigenbasis
+  <with|mode|math|m<rsub|k>>. For <with|mode|math|s\<in\>(-\<infty\>,\<infty\>)>,
+  we can construct an arbitrary power of the operator by defining its effect
+  on the eigenbasis <with|mode|math|m<rsub|k><rsub|>> by
+  <with|mode|math|\<Lambda\><rsup|s>m<rsub|k>\<assign\>\<lambda\><rsub|k><rsup|s>m<rsub|k>>.
+  Further, we may observe
+
+  <\equation*>
+    <ip|\<Lambda\><rsup|s>f|f|H|>=<big|sum><rsub|k>\<lambda\><rsub|s><rsup|k>f<rsub|k>=<ip|\<Lambda\><rsup|s/2>f|\<Lambda\><rsup|s/2>f||>=<norm|\<Lambda\><rsup|s/2>|H|>,
+  </equation*>
+
+  where
+
+  <\equation*>
+    f<rsub|k>=<ip|f|m<rsub|k>|H|>
+  </equation*>
+
+  are the Fourier coefficients. Then the <em|Sobolev Space>
+
+  <\equation*>
+    H<rsub|2><rsup|s>(0,b)\<assign\><left|{>f\<in\>H:<norm|f|s|2>\<assign\><norm|\<Lambda\><rsup|s/2>f|H|2>\<less\>\<infty\><right|}>.
+  </equation*>
+
+  For <with|mode|math|s\<less\>0>, define
+
+  <\equation*>
+    H<rsub|2><rsup|s>(0,b)\<assign\>\<Lambda\><rsup|-s>H.
+  </equation*>
+
+  We may also define
+
+  <\equation*>
+    <norm|f|s|>\<assign\><sqrt|<big|sum><rsub|k\<geqslant\>1><ip|\<lambda\><rsub|k><rsup|s/2>f<rsub|k>|\<lambda\><rsub|k><rsup|s/2>f<rsub|k>||>>.<space|1em><with|color|red|<with|mode|text|It
+    was><big|sum><rsub|k\<geqslant\>1><ip|\<lambda\><rsub|k><rsup|s/2>f<rsub|k>|\<lambda\><rsub|k><rsup|s>f<rsub|k>||><with|mode|text|on
+    the board, but that seemed wrong.>>
+  </equation*>
+
+  The spaces <with|mode|math|{H<rsup|s><rsub|2>(0,b),s\<in\>\<bbb-R\>}> form
+  the scale of spaces <with|mode|math|H<rsub|2><rsup|s<rsub|1>>\<subset\>H<rsub|2><rsup|s<rsub|2>>>
+  if <with|mode|math|s<rsub|1>\<gtr\>s<rsub|2>>.
+
+  Properties: Let <with|mode|math|s<rsub|1>\<gtr\>s<rsub|2>>. Then
+
+  <\enumerate>
+    <item><with|mode|math|H<rsup|s<rsub|1>>> is dense in
+    <with|mode|math|H<rsup|s<rsub|2>>> in the norm
+    <with|mode|math|<norm|\<cdot\>|s<rsub|2>|>>.
+
+    <item><with|mode|math|H<rsup|s>> is a Hilbert space
+    <with|mode|math|<ip|f|g|s|>=<ip|\<Lambda\><rsup|s/2>f|\<Lambda\><rsup|s/2>g|0|>>.
+
+    <item>For <with|mode|math|s\<geqslant\>0>,
+    <with|mode|math|v\<in\>H<rsup|-s>(0,b)>,
+    <with|mode|math|u\<in\>H<rsup|s>(0,b)>, denote
+
+    <\equation*>
+      [u,v]\<assign\><ip|<wide*|\<Lambda\><rsup|s>v|\<wide-underbrace\>><rsub|\<in\>H>|<wide*|\<Lambda\><rsup|-s>u|\<wide-underbrace\>><rsub|\<in\>H>||>.
+    </equation*>
+
+    <\enumerate>
+      <item>If <with|mode|math|v> also belongs to <with|mode|math|H>, then
+      <with|mode|math|[u,v]=<ip|v|u|H|>>. Proof:
+      <with|mode|math|\<Lambda\><rsup|s>> is self-adjoint in
+      <with|mode|math|H>.
+    </enumerate>
+  </enumerate>
+
+  <\remark>
+    We will typically work with three elements of the Sobolev scale--the
+    middle, e.g. <with|mode|math|L<rsup|2>>, then the space where the
+    solution lives and finally the space that the solution gets mapped to by
+    the operator.
+  </remark>
+
+  <em|Important mnemonic rule:>
+
+  <\equation*>
+    <wide*|<frac|\<partial\><rsup|n>|\<partial\>x<rsup|n>>|\<wide-underbrace\>><rsub|\<Lambda\><rsup|n/2>>:H<rsup|s>\<rightarrow\>H<rsup|s-n>.
+  </equation*>
+
+  <subsection|Normal triples/Rigged Hilbert space/Gelfand's triple>
+
+  <\definition>
+    The triple of Hilbert spaces <with|mode|math|(V,H,V<rprime|'>)> is called
+    a normal triple if the following conditions hold:
+
+    <\enumerate>
+      <item><with|mode|math|V\<subset\>H\<subset\>V<rprime|'>>.
+
+      <item>The imbeddings <with|mode|math|V\<rightarrow\>H\<rightarrow\>V<rprime|'>>
+      are dense and continuous.
+
+      <item><with|mode|math|><with|mode|math|V<rprime|'>> is the space dual
+      to <with|mode|math|V> with respect to the scalar product in
+      <with|mode|math|H>.
+    </enumerate>
+
+    Note that we always assume that <with|mode|math|H> is identified with its
+    dual.
+  </definition>
+
+  <\example>
+    Any triple <with|mode|math|H<rsup|s+\<gamma\>><rsub|2>,H<rsup|s>,H<rsup|s-\<gamma\>>>
+    for <with|mode|math|\<gamma\>\<geqslant\>0> is a normal triple.
+  </example>
+
+  <subsection|Actual SPDEs>
+
+  <\equation*>
+    \<mathd\>u(t)=(A*u(t)=f(t))\<mathd\>t+<big|sum><rsub|k=1><rsup|\<infty\>>(M<rsub|k>u(t)+g<rsub|k>(t))\<mathd\>W<rsub|k><rsup|t>,<space|1em>u(0)=u<rsub|0>\<in\>H.
+  </equation*>
+
+  We will assume that <with|mode|math|A:V\<rightarrow\>V<rprime|'>> and
+  <with|mode|math|M<rsub|k>:V\<rightarrow\>H>, and further
+  <with|mode|math|f\<in\>L<rsup|2>(0,T;V<rprime|'>)> and
+  <with|mode|math|g<rsub|k>\<in\>L<rsup|2>(0,T;H)>. We further assume
+  <with|mode|math|f(t)> and <with|mode|math|g<rsub|k>(t)> are
+  <with|mode|math|\<cal-F\><rsub|t><rsup|W>>-measurable, and
+  <with|mode|math|V=H<rsub|2><rsup|1>(\<bbb-R\><rsup|d>)>,
+  <with|mode|math|H=L<rsub|2>(\<bbb-R\><rsup|d>)>,
+  <with|mode|math|V<rprime|'>=H<rsup|-1>(\<bbb-R\><rsup|d>)>.
+
+  <\equation*>
+    A*u=<big|sum><rsub|i,j>(a<rsup|i,j>(t,x)u<rsub|x<rsub|i>>)<rsub|x<rsub|j>>+<big|sum><rsub|i>b<rsup|i>(t,x)u<rsub|x<rsub|i>>+c.
+  </equation*>
+
+  <\equation*>
+    M<rsub|k>u=<big|sum><rsub|i>\<sigma\><rsup|i,k>(t,x)u<rsub|x<rsub|i>>+h<rsup|k>(t,x)u.
+  </equation*>
+
+  We might also want to consider
+
+  <\equation*>
+    A u=<big|sum><rsub|\|\<alpha\>\|\<leqslant\>2n>a<rsub|\<alpha\>>\<partial\><rsup|\<alpha\>>u,<space|1em>M<rsub|k>u=<big|sum><rsub|\|\<alpha\>\|\<leqslant\>n>\<sigma\><rsub|\<alpha\>>\<partial\><rsup|\<alpha\>>u.
+  </equation*>
 </body>
 
 <\initial>
@@ -1442,24 +1874,37 @@
 <\references>
   <\collection>
     <associate|auto-1|<tuple|<uninit>|1>>
-    <associate|auto-10|<tuple|2.2.1|?>>
-    <associate|auto-11|<tuple|2.2.2|?>>
-    <associate|auto-12|<tuple|3|?>>
-    <associate|auto-13|<tuple|4|?>>
-    <associate|auto-14|<tuple|4.1|?>>
-    <associate|auto-15|<tuple|4.2|?>>
-    <associate|auto-16|<tuple|4.2.1|?>>
-    <associate|auto-17|<tuple|4.2.2|?>>
-    <associate|auto-2|<tuple|1|2>>
-    <associate|auto-3|<tuple|1.1|3>>
-    <associate|auto-4|<tuple|1.2|4>>
+    <associate|auto-10|<tuple|2.2.1|9>>
+    <associate|auto-11|<tuple|2.2.2|11>>
+    <associate|auto-12|<tuple|3|12>>
+    <associate|auto-13|<tuple|4|14>>
+    <associate|auto-14|<tuple|4.1|15>>
+    <associate|auto-15|<tuple|4.2|15>>
+    <associate|auto-16|<tuple|4.2.1|15>>
+    <associate|auto-17|<tuple|4.2.2|16>>
+    <associate|auto-18|<tuple|5|16>>
+    <associate|auto-19|<tuple|6|17>>
+    <associate|auto-2|<tuple|1|1>>
+    <associate|auto-20|<tuple|6.1|17>>
+    <associate|auto-21|<tuple|6.2|18>>
+    <associate|auto-22|<tuple|6.3|18>>
+    <associate|auto-23|<tuple|6.4|18>>
+    <associate|auto-24|<tuple|7|?>>
+    <associate|auto-25|<tuple|7.1|?>>
+    <associate|auto-26|<tuple|7.2|?>>
+    <associate|auto-27|<tuple|7.3|?>>
+    <associate|auto-3|<tuple|1.1|2>>
+    <associate|auto-4|<tuple|1.2|3>>
     <associate|auto-5|<tuple|1.3|4>>
-    <associate|auto-6|<tuple|1.4|6>>
-    <associate|auto-7|<tuple|2|7>>
-    <associate|auto-8|<tuple|2.1|8>>
+    <associate|auto-6|<tuple|1.4|4>>
+    <associate|auto-7|<tuple|2|6>>
+    <associate|auto-8|<tuple|2.1|7>>
     <associate|auto-9|<tuple|2.2|9>>
-    <associate|def:bm-def2|<tuple|1.18|4>>
-    <associate|eq:ce-example-exp|<tuple|1.1|3>>
+    <associate|def:bm-def2|<tuple|1.18|5>>
+    <associate|eq:ce-example-exp|<tuple|1.1|4>>
+    <associate|eq:heat-nonlinear|<tuple|6.3|18>>
+    <associate|eq:sol-heat|<tuple|6.1|17>>
+    <associate|eq:sol-rewritten-heat|<tuple|6.2|18>>
   </collection>
 </references>
 
@@ -1522,6 +1967,43 @@
       <with|mode|<quote|math>|H<rsub|2><rsup|\<gamma\>>>
       <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
       <no-break><pageref|auto-14>>
+
+      <with|par-left|<quote|1.5fn>|4.2<space|2spc>SPDEs in Sobolev Spaces
+      <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
+      <no-break><pageref|auto-15>>
+
+      <with|par-left|<quote|3fn>|4.2.1<space|2spc>Classical Theory
+      <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
+      <no-break><pageref|auto-16>>
+
+      <with|par-left|<quote|3fn>|4.2.2<space|2spc>Stochastic Theory
+      <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
+      <no-break><pageref|auto-17>>
+
+      <vspace*|1fn><with|font-series|<quote|bold>|math-font-series|<quote|bold>|5<space|2spc>Nonlinear
+      Filtering (``Hidden Markov Models'')>
+      <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
+      <no-break><pageref|auto-18><vspace|0.5fn>
+
+      <vspace*|1fn><with|font-series|<quote|bold>|math-font-series|<quote|bold>|6<space|2spc>Solutions
+      of PDEs and SPDEs> <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
+      <no-break><pageref|auto-19><vspace|0.5fn>
+
+      <with|par-left|<quote|1.5fn>|6.1<space|2spc>Classical Solutions
+      <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
+      <no-break><pageref|auto-20>>
+
+      <with|par-left|<quote|1.5fn>|6.2<space|2spc>Generalized Solutions
+      <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
+      <no-break><pageref|auto-21>>
+
+      <with|par-left|<quote|1.5fn>|6.3<space|2spc>Mild Solutions
+      <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
+      <no-break><pageref|auto-22>>
+
+      <with|par-left|<quote|1.5fn>|6.4<space|2spc>Generalization of the
+      notion of a ``solution'' in SDE <datoms|<macro|x|<repeat|<arg|x>|<with|font-series|medium|<with|font-size|1|<space|0.2fn>.<space|0.2fn>>>>>|<htab|5mm>>
+      <no-break><pageref|auto-23>>
     </associate>
   </collection>
 </auxiliary>
